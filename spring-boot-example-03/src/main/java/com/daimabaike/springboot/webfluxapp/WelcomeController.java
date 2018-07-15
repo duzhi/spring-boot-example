@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.function.Consumer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,12 +22,17 @@ import reactor.core.publisher.MonoSink;
  */
 @RestController
 public class WelcomeController {
-
+	private static final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
+	
 	@GetMapping("/")
 	public Mono<String> welcome() {
+		logger.info("welcome");
+		ThreadUtils.print();
 		return Mono.create(new Consumer<MonoSink<String>>() {
 			@Override
 			public void accept(MonoSink<String> stringMonoSink) {
+				logger.info("welcome accept");
+				ThreadUtils.print();
 				stringMonoSink.success("Hello World:" + new Date());
 			}
 		});
