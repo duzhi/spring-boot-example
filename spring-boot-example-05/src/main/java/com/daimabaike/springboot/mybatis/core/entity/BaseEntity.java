@@ -1,11 +1,8 @@
 package com.daimabaike.springboot.mybatis.core.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class BaseEntity<ID extends Serializable> implements Serializable {
-
-	private static final long serialVersionUID = -7724447990363537876L;
+public class BaseEntity<ID> {
 
 	protected ID id;
 

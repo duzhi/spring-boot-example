@@ -1,18 +1,39 @@
 package com.daimabaike.springboot.mybatis.core.service;
 
-import java.io.Serializable;
+import java.util.List;
 
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.daimabaike.springboot.mybatis.core.dao.BaseDao;
 import com.daimabaike.springboot.mybatis.core.entity.BaseEntity;
 
-public class BaseService<D extends BaseDao<T,ID>, T extends BaseEntity<ID>, ID extends Serializable> {
+@Transactional(readOnly = true)
+public class BaseService<D extends BaseDao<T, ID>, T extends BaseEntity<ID>, ID> {
 
+	protected Logger logger = Logger.getLogger(this.getClass());
+	
 	@Autowired
 	protected D dao;
-	
+
 	public T get(ID id) {
 		return dao.get(id);
 	}
+
+	public T queryForUpdateOne(T t) {
+		List<T> list = this.queryForUpdate(t);
+		if (list.isEmpty()) {
+			return null;
+		}
+		if (list.size() > 1) {
+			throw new RuntimeException("no one");
+		}
+		return list.get(0);
+	}
+
+	public List<T> queryForUpdate(T t) {
+		return dao.queryForUpdate(t);
+	}
+
 }

@@ -4,8 +4,6 @@ import com.daimabaike.springboot.mybatis.core.entity.BaseEntity;
 
 public class User extends BaseEntity<String> {
 
-	private static final long serialVersionUID = 1L;
-
 	private String name;
 
 	private String tel;

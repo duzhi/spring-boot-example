@@ -1,10 +1,6 @@
 package com.daimabaike.springboot.mybatis.sys.entity;
 
-import java.io.Serializable;
-
-public class RoleUserID implements Serializable {
-
-	private static final long serialVersionUID = 5814887617432272335L;
+public class RoleUserID {
 
 	private String roleId;
 	private String userId;

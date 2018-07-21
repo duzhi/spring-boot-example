@@ -5,14 +5,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.daimabaike.springboot.mybatis.core.entity.ResultService;
 import com.daimabaike.springboot.mybatis.core.web.BaseController;
 import com.daimabaike.springboot.mybatis.sys.entity.User;
 import com.daimabaike.springboot.mybatis.sys.service.UserService;
 
 @RestController
-public class UserController extends BaseController{
+public class UserController extends BaseController {
 
-	
 	@Autowired
 	private UserService userService;
 
@@ -24,4 +24,10 @@ public class UserController extends BaseController{
 		return user;
 	}
 
+	@RequestMapping(value = "/user/for-update")
+	public ResultService<User> forUpdate(User user) {
+		logger.info("name={}", user.getName());
+
+		return userService.doBiz(user);
+	}
 }
