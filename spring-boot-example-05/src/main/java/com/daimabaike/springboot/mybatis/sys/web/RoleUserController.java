@@ -10,15 +10,16 @@ import com.daimabaike.springboot.mybatis.sys.entity.RoleUserID;
 import com.daimabaike.springboot.mybatis.sys.service.RoleUserService;
 
 @RestController
+@RequestMapping(value = "sys")
 public class RoleUserController extends BaseController {
 
 	@Autowired
 	private RoleUserService roleUserService;
 
-	@RequestMapping(value = "/roleUser")
+	@RequestMapping(value = "role-user")
 	public RoleUser get(RoleUserID id) {
 		RoleUser roleUser = roleUserService.get(id);
-
+		
 		logger.info(roleUser.toString());
 		return roleUser;
 	}

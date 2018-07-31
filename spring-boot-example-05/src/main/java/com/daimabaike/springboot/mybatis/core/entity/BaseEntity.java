@@ -13,6 +13,8 @@ public class BaseEntity<ID> {
 	protected int pageNum;
 	protected int pageSize;
 
+	protected String verifymessage;
+	
 	public ID getId() {
 		return id;
 	}
@@ -52,4 +54,17 @@ public class BaseEntity<ID> {
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
+	
+	public boolean validate(){
+		return true;
+	}
+
+	public String getVerifymessage() {
+		return verifymessage;
+	}
+
+	public void setVerifymessage(String verifymessage) {
+		this.verifymessage = verifymessage;
+	}
+	
 }

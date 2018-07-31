@@ -1,16 +1,17 @@
-package com.daimabaike.springboot.mybatis.sys.dao;
+package com.daimabaike.springboot.mybatis.sys.mapper;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
-import com.daimabaike.springboot.mybatis.core.dao.BaseDao;
+import com.daimabaike.springboot.mybatis.core.mapper.BaseMapper;
 import com.daimabaike.springboot.mybatis.sys.entity.User;
 
 @Mapper
-public interface UserDao extends BaseDao<User,String> {
+public interface UserMapper extends BaseMapper<User,String> {
 
 	@Override
 	@Select("select * from user where id=#{id}")
@@ -24,4 +25,6 @@ public interface UserDao extends BaseDao<User,String> {
 	@Select("select * from user where name=#{name} for update")
 	List<User> queryForUpdate(User user) ;
 	
+	@Update("")
+	void savePic();
 }

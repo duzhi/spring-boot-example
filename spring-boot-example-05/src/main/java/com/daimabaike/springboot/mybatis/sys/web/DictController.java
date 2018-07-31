@@ -10,17 +10,18 @@ import com.daimabaike.springboot.mybatis.sys.entity.Dict;
 import com.daimabaike.springboot.mybatis.sys.service.DictService;
 
 @RestController
-public class DictController extends BaseController{
+@RequestMapping(value = "sys")
+public class DictController extends BaseController {
 
-	
 	@Autowired
 	private DictService dictService;
 
-	@RequestMapping(value = "/dict/{id}")
+	@RequestMapping(value = "dict/{id}")
 	public Dict get(@PathVariable int id) {
 		Dict dict = dictService.get(id);
 
-		logger.info(dict.toString());
+		logger.info("dict = {}", dict == null ? "" : dict.toString());
+
 		return dict;
 	}
 

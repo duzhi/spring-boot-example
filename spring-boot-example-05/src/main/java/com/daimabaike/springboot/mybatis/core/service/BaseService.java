@@ -6,14 +6,14 @@ import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.daimabaike.springboot.mybatis.core.dao.BaseDao;
+import com.daimabaike.springboot.mybatis.core.mapper.BaseMapper;
 import com.daimabaike.springboot.mybatis.core.entity.BaseEntity;
 
 @Transactional(readOnly = true)
-public class BaseService<D extends BaseDao<T, ID>, T extends BaseEntity<ID>, ID> {
+public class BaseService<D extends BaseMapper<T, ID>, T extends BaseEntity<ID>, ID> {
 
 	protected Logger logger = Logger.getLogger(this.getClass());
-	
+
 	@Autowired
 	protected D dao;
 

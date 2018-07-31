@@ -1,11 +1,17 @@
 package com.daimabaike.springboot.mybatis.sys.entity;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.daimabaike.springboot.mybatis.core.entity.BaseEntity;
 
 public class User extends BaseEntity<String> {
 
+	@NotNull(message="名称不能为空")
 	private String name;
-
+	
+	@Length(min=1, max=13, message="电话长度必须介于 1 和 13 之间")
 	private String tel;
 
 	public String getName() {
@@ -29,4 +35,13 @@ public class User extends BaseEntity<String> {
 		return String.format("id=%s,name=%s,tel=%s", id, name, tel);
 	}
 	
+	@Override
+	public boolean validate() {
+		if("test".equals(tel)) {
+			verifymessage = "test abc";
+			return false;
+		}
+
+		return true;
+	}
 }

@@ -1,0 +1,3 @@
+===
+Hello World Spring Boot ${spring-boot.version}
+===

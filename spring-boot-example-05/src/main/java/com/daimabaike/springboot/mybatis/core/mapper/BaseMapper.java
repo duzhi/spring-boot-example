@@ -1,8 +1,8 @@
-package com.daimabaike.springboot.mybatis.core.dao;
+package com.daimabaike.springboot.mybatis.core.mapper;
 
 import java.util.List;
 
-public interface BaseDao<T, ID> {
+public interface BaseMapper<T, ID> {
 
 	default T get(ID id) {
 		throw new UnsupportedOperationException("get");

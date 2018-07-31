@@ -3,13 +3,13 @@ package com.daimabaike.springboot.mybatis.sys.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.daimabaike.springboot.mybatis.core.entity.ResultService;
+import com.daimabaike.springboot.mybatis.core.entity.Result;
 import com.daimabaike.springboot.mybatis.core.service.BaseService;
-import com.daimabaike.springboot.mybatis.sys.dao.UserDao;
+import com.daimabaike.springboot.mybatis.sys.mapper.UserMapper;
 import com.daimabaike.springboot.mybatis.sys.entity.User;
 
 @Service
-public class UserService extends BaseService<UserDao, User, String> {
+public class UserService extends BaseService<UserMapper, User, String> {
 
 	public int find(int time) {
 		return dao.find(time);
@@ -20,8 +20,7 @@ public class UserService extends BaseService<UserDao, User, String> {
 	 * @return
 	 */
 	@Transactional
-	public ResultService<User> doBiz(User user) {
-		ResultService<User> r = new ResultService<>();
+	public Result<User> doBiz(User user) {
 		logger.info("start doBiz");
 
 		User u = this.queryForUpdateOne(user);
@@ -30,14 +29,15 @@ public class UserService extends BaseService<UserDao, User, String> {
 
 		logger.info("debug dot");
 
-		if ("123".equals(u.getName())) {
-			r.setCode("abc");
-			r.setMessage("dsdsd");
-			return r;
+		if (u == null) {
+			return Result.fail("aaa");
 		}
-		r.setResult(u);
-		return r;
-		
+		if ("123".equals(u.getName())) {
+			return Result.fail("bbb");
+		}
+
+		return Result.ok(u);
+
 	}
 
 }
