@@ -9,7 +9,7 @@ import com.daimabaike.springboot.mybatis.sys.entity.RoleUserID;
 @Mapper
 public interface RoleUserMapper extends BaseMapper<RoleUser,RoleUserID>{
 
-	@Override
+//	@Override
 	@Select("select * from sys_role_user where role_id=#{roleId} and user_id=#{userId}")
 	RoleUser get( RoleUserID id);
 	

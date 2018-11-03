@@ -10,8 +10,11 @@ import com.daimabaike.springboot.mybatis.sys.entity.Dict;
 @Mapper
 public interface DictMapper extends BaseMapper<Dict,Integer> {
 
-	@Override
+//	@Override
 	@Select("select * from sys_dict where id=#{id}")
 	Dict get(@Param("id") Integer id);
 
+	
+	
+//	Dict get(@Param("id") DTO id);
 }

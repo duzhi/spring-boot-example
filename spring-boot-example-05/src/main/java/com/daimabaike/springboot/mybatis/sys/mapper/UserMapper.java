@@ -13,7 +13,7 @@ import com.daimabaike.springboot.mybatis.sys.entity.User;
 @Mapper
 public interface UserMapper extends BaseMapper<User,String> {
 
-	@Override
+//	@Override
 	@Select("select * from user where id=#{id}")
 	User get(@Param("id") String id);
 

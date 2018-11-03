@@ -18,7 +18,7 @@ public class BaseService<D extends BaseMapper<T, ID>, T extends BaseEntity<ID>, 
 	protected D dao;
 
 	public T get(ID id) {
-		return dao.get(id);
+		return dao.getById(id);
 	}
 
 	public T queryForUpdateOne(T t) {

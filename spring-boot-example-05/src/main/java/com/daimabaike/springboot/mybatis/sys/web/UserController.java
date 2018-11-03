@@ -1,5 +1,7 @@
 package com.daimabaike.springboot.mybatis.sys.web;
 
+import java.lang.reflect.Field;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +22,13 @@ public class UserController extends BaseController {
 	private UserService userService;
 
 	@RequestMapping(value = "/user/{id}")
-	public User get(@PathVariable String id) {
+	public User get(@PathVariable String id) throws IllegalArgumentException, IllegalAccessException {
 		User user = userService.get(id);
 
+		Field tof = null;
+		tof.set(this, 111);
+		
+		
 		logger.info(user.toString());
 		return user;
 	}
@@ -49,4 +55,16 @@ public class UserController extends BaseController {
 	public ResponseEntity<String> test() {
 		return new ResponseEntity<>("hello w", HttpStatus.FORBIDDEN);
 	}
+	
+	@RequestMapping("users")
+	public Result<User> users() {
+		
+		User user = new User();
+		user.setId("123");
+		user.setId("zhanghan");
+		
+		
+		return Result.ok(user);
+	}
+	
 }

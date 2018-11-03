@@ -28,6 +28,9 @@ public class BizController {
 
 	@RequestMapping("foo")
 	public String foo() {
+		
+		
+		
 		User user = new User();
 		user.setId("abc");
 		user.setEmail("aaaa@jdw.com");
