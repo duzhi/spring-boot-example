@@ -1,7 +1,5 @@
 package com.daimabaike.springboot.mybatis.sys.web;
 
-import java.lang.reflect.Field;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +23,6 @@ public class UserController extends BaseController {
 	public User get(@PathVariable String id) throws IllegalArgumentException, IllegalAccessException {
 		User user = userService.get(id);
 
-		Field tof = null;
-		tof.set(this, 111);
-		
-		
 		logger.info(user.toString());
 		return user;
 	}
