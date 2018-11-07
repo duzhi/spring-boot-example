@@ -3,13 +3,14 @@ package com.daimabaike.springboot.mybatis.sys.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.daimabaike.springboot.mybatis.core.entity.Result;
+import com.daimabaike.springboot.mybatis.core.Result;
 import com.daimabaike.springboot.mybatis.core.service.BaseService;
-import com.daimabaike.springboot.mybatis.sys.mapper.UserMapper;
+import com.daimabaike.springboot.mybatis.sys.dto.UserDto;
 import com.daimabaike.springboot.mybatis.sys.entity.User;
+import com.daimabaike.springboot.mybatis.sys.mapper.UserMapper;
 
 @Service
-public class UserService extends BaseService<UserMapper, User, String> {
+public class UserService extends BaseService<UserMapper, User, UserDto> {
 
 	public int find(int time) {
 		return dao.find(time);
@@ -20,10 +21,10 @@ public class UserService extends BaseService<UserMapper, User, String> {
 	 * @return
 	 */
 	@Transactional
-	public Result<User> doBiz(User user) {
+	public Result<User> doBiz(UserDto userDto) {
 		logger.info("start doBiz");
 
-		User u = this.queryForUpdateOne(user);
+		User u = this.queryForUpdateOne(userDto);
 
 		logger.info(u);
 

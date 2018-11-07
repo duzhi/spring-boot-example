@@ -1,4 +1,4 @@
-package com.daimabaike.springboot.mybatis.core.entity;
+package com.daimabaike.springboot.mybatis.core;
 
 public class Result<T> {
 

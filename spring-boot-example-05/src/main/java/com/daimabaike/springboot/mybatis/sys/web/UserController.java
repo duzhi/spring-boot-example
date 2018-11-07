@@ -3,12 +3,12 @@ package com.daimabaike.springboot.mybatis.sys.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.daimabaike.springboot.mybatis.core.entity.Result;
+import com.daimabaike.springboot.mybatis.core.Result;
 import com.daimabaike.springboot.mybatis.core.web.BaseController;
+import com.daimabaike.springboot.mybatis.sys.dto.UserDto;
 import com.daimabaike.springboot.mybatis.sys.entity.User;
 import com.daimabaike.springboot.mybatis.sys.service.UserService;
 
@@ -20,23 +20,18 @@ public class UserController extends BaseController {
 	private UserService userService;
 
 	@RequestMapping(value = "/user/{id}")
-	public User get(@PathVariable String id) throws IllegalArgumentException, IllegalAccessException {
-		User user = userService.get(id);
+	public User get(UserDto userDto) {
+		User user = userService.get(userDto);
 
 		logger.info(user.toString());
 		return user;
 	}
 
 	@RequestMapping(value = "/user/for-update")
-	public Result<User> forUpdate(User user) {
-		logger.info("name={}", user.getName());
+	public Result<User> forUpdate(UserDto userDto) {
+		logger.info("name={}", userDto.getName());
 
-		Result<User> r = this.validate(user);
-		if (r != null) {
-			return r;
-		}
-
-		return userService.doBiz(user);
+		return userService.doBiz(userDto);
 	}
 
 	@RequestMapping(value = "/user/test-result")

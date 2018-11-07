@@ -22,10 +22,10 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>javax.transaction-api</artifactId>
-		</dependency>
+		</dependency-->
 	</dependencies>
 
 </project>

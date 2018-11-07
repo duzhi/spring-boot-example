@@ -2,29 +2,21 @@ package com.daimabaike.springboot.mybatis.core.mapper;
 
 import java.util.List;
 
-public interface BaseMapper<T, ID> {
+public interface BaseMapper<T, DTO> {
 
-	default T getById(ID id) {
+	// default T getById(ID id) {
+	// throw new UnsupportedOperationException("get");
+	// }
+
+	default T get(DTO id) {
 		throw new UnsupportedOperationException("get");
 	}
-	
-//	default T get(ID id) {
-//		throw new UnsupportedOperationException("get");
-//	}
-	
-	default T get(T id) {
-		throw new UnsupportedOperationException("get");
-	}
-	
-	default int save(T t) {
+
+	default int save(DTO t) {
 		throw new UnsupportedOperationException("save");
 	}
 
-	default List<T> queryForUpdate(T t) {
+	default List<T> queryForUpdate(DTO t) {
 		throw new UnsupportedOperationException("queryForUpdate");
 	}
-	
-	
-	
-	
 }

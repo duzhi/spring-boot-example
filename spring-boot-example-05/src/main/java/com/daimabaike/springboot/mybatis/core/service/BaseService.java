@@ -10,18 +10,18 @@ import com.daimabaike.springboot.mybatis.core.mapper.BaseMapper;
 import com.daimabaike.springboot.mybatis.core.entity.BaseEntity;
 
 @Transactional(readOnly = true)
-public class BaseService<D extends BaseMapper<T, ID>, T extends BaseEntity<ID>, ID> {
+public class BaseService<D extends BaseMapper<T, DTO>, T extends BaseEntity<?>,DTO> {
 
 	protected Logger logger = Logger.getLogger(this.getClass());
 
 	@Autowired
 	protected D dao;
 
-	public T get(ID id) {
-		return dao.getById(id);
+	public T get(DTO id) {
+		return dao.get(id);
 	}
 
-	public T queryForUpdateOne(T t) {
+	public T queryForUpdateOne(DTO t) {
 		List<T> list = this.queryForUpdate(t);
 		if (list.isEmpty()) {
 			return null;
@@ -32,7 +32,7 @@ public class BaseService<D extends BaseMapper<T, ID>, T extends BaseEntity<ID>, 
 		return list.get(0);
 	}
 
-	public List<T> queryForUpdate(T t) {
+	public List<T> queryForUpdate(DTO t) {
 		return dao.queryForUpdate(t);
 	}
 

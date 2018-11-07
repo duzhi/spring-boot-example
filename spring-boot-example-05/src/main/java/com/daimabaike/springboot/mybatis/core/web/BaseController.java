@@ -11,8 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.daimabaike.springboot.mybatis.core.Result;
 import com.daimabaike.springboot.mybatis.core.entity.BaseEntity;
-import com.daimabaike.springboot.mybatis.core.entity.Result;
 
 public class BaseController {
 
