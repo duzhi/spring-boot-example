@@ -8,8 +8,7 @@ import com.daimabaike.springboot.mybatis.foo.entity.Account;
 import com.daimabaike.springboot.mybatis.foo.mapper.AccountMapper;
 
 @Service
-public class AccountService extends BaseService<AccountMapper,Account,AccountDto>{
-
+public class AccountService extends BaseService<AccountMapper, Account,AccountDto>{
 
 
 }

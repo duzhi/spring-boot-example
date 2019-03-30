@@ -1,17 +1,10 @@
 package com.daimabaike.springboot.mybatis.sys.dto;
 
-public class UserDto {
-	private String id;
+import com.daimabaike.springboot.mybatis.core.dto.BaseDto;
+
+public class UserDto extends BaseDto{
 
 	private String name;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;

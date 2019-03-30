@@ -8,6 +8,6 @@ import com.daimabaike.springboot.mybatis.sys.entity.Dict;
 import com.daimabaike.springboot.mybatis.sys.mapper.DictMapper;
 
 @Service
-public class DictService extends BaseService<DictMapper,Dict,DictDto>{
+public class DictService extends BaseService< DictMapper,Dict,DictDto>{
 
 }

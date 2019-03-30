@@ -1,11 +1,17 @@
 package com.daimabaike.springboot.webapp.common.web;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpServerErrorException;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+import com.daimabaike.springboot.webapp.common.BizException;
 import com.daimabaike.springboot.webapp.common.Result;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
@@ -13,17 +19,24 @@ import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 @RestController
 public class CommonController extends BaseController {
 
-	
-	
-	@ExceptionHandler(BindException.class)
-	public Result<Void> bindException(BindException t) {
-		log.info(t.getAllErrors().get(0).getDefaultMessage());
-
-		
+	@ExceptionHandler(BizException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public Result<Void> bizException(BizException t) {
 		
 		Result<Void> r = new Result<>();
 		r.setCode(40000);
-		r.setMessage(t.getAllErrors().get(0).getDefaultMessage());
+		r.setMessage(t.getMessage());
+
+		return r;
+	}
+	
+	@ExceptionHandler(BindException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public Result<Void> bindException(BindException t) {
+		
+		Result<Void> r = new Result<>();
+		r.setCode(40000);
+		r.setMessage(t.getMessage());
 
 		return r;
 	}
@@ -44,6 +57,21 @@ public class CommonController extends BaseController {
 		r.setMessage("OriginalMessage=" + ie.getOriginalMessage() +";\r\nMessage=" + ie.getMessage() +";\r\nPathReference="+ie.getPathReference()+""+ie.getPath());
 
 		return r;
+	}
+	
+	
+	@ExceptionHandler(HttpServerErrorException.class)
+	public Result<Void> ex22(HttpServerErrorException t) {
+		log.error("sys.error", t);
+
+//		r.setCode(50000);
+		return JSONObject.parseObject(t.getResponseBodyAsString(), new TypeReference<Result<Void>>(){});
+		
+//		Result<Void> r = new Result<>();
+//		r.setCode(50000);
+//		r.setMessage("Client Error or Server Error");
+//
+//		return r;
 	}
 	@ExceptionHandler(Throwable.class)
 	public Result<Void> ex(Throwable t) {

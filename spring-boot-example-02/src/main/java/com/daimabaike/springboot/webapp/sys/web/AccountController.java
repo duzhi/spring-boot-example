@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.daimabaike.springboot.webapp.common.BizException;
 import com.daimabaike.springboot.webapp.common.Result;
+import com.daimabaike.springboot.webapp.common.ResultUtils;
 import com.daimabaike.springboot.webapp.common.web.BaseController;
 import com.daimabaike.springboot.webapp.sys.dto.UserDTO;
 import com.daimabaike.springboot.webapp.sys.service.AccountService;
 import com.daimabaike.springboot.webapp.sys.vo.AccountVO;
-import com.fasterxml.jackson.annotation.JsonView;
+//import com.fasterxml.jackson.annotation.JsonView;
 @RestController
 public class AccountController extends BaseController{
 	
@@ -26,18 +27,23 @@ public class AccountController extends BaseController{
 		this.accountService = accountService;
 	}
 	
-	@RequestMapping("login")
-	public String login() {
+//	consumes： 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;
+//	produces:    指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回；
+
+	@RequestMapping(value="login",produces="application/json")
+	public Result<String> login() {
+		
+		
+		
+		
 		
 		// 1 验证密码
 		
-		
 		// 2用户信息，权限信息初始化
 		
-		
+		System.out.println("login abcd");
 		// redis 存储
-		
-		return String.format(" login at %s.", new Date());
+		return ResultUtils.ok(String.format(" login at %s.", new Date()));
 	}
 	
 //    @InitBinder
@@ -89,7 +95,6 @@ public class AccountController extends BaseController{
 	}
 	
 	@RequestMapping("view2")
-    @JsonView(AccountVO.ChannelView.class)
 	public AccountVO mm1(@ModelAttribute UserDTO userDTO) {//,@RequestAttribute(required=false) String viewType
 //		int type = 0;
 //		try {

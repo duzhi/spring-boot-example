@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import com.daimabaike.springboot.mybatis.core.mapper.BaseMapper;
 import com.daimabaike.springboot.mybatis.sys.dto.UserDto;
@@ -23,8 +22,6 @@ public interface UserMapper extends BaseMapper<User,UserDto> {
 	// for update 没有索引的字段，会全表锁住。如果不了解细节，慎用。建议查询条件是唯一键字段（含主键）才使用
 	@Override
 	@Select("select * from user where name=#{name} for update")
-	List<User> queryForUpdate(UserDto UserDto) ;
+	List<User> query(UserDto dto) ;
 	
-	@Update("")
-	void savePic();
 }

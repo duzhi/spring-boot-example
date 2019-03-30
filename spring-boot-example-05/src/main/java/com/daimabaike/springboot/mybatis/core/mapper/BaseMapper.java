@@ -4,19 +4,13 @@ import java.util.List;
 
 public interface BaseMapper<T, DTO> {
 
-	// default T getById(ID id) {
-	// throw new UnsupportedOperationException("get");
-	// }
+	T get(DTO id);
+	T getById(Long id);
+	int insert(T t);
+	int update(T t);
 
-	default T get(DTO id) {
-		throw new UnsupportedOperationException("get");
-	}
+	List<T> query(DTO t);
+	
+	List<T> queryAll(DTO t);
 
-	default int save(DTO t) {
-		throw new UnsupportedOperationException("save");
-	}
-
-	default List<T> queryForUpdate(DTO t) {
-		throw new UnsupportedOperationException("queryForUpdate");
-	}
 }

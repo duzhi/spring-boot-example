@@ -1,15 +1,8 @@
 package com.daimabaike.springboot.mybatis.foo.dto;
 
-public class AccountDto {
+import com.daimabaike.springboot.mybatis.core.dto.BaseDto;
 
-	private String id;
+public class AccountDto extends BaseDto{
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 	
 }

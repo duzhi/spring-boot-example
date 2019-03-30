@@ -2,15 +2,13 @@ package com.daimabaike.springboot.webapp.sys.vo;
 
 import java.util.Date;
 
+import com.daimabaike.springboot.webapp.common.vo.BaseVo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonView;
 
 @JsonInclude(Include.NON_NULL)
+public class AccountVO extends BaseVo {
 
-public class AccountVO {
-
-	@JsonView(AccountVO.ChannelView.class)
 	private String id;
 
 	private String ip;
@@ -19,18 +17,11 @@ public class AccountVO {
 
 	private Date updateTime;
 
-	@JsonView(AccountVO.ChannelView.class)
 	private String name;
+	
 	private String deptNo;
 
 	private String email;
-
-//	private String passWdMd5;
-//
-//	private Integer passWdSalt;
-
-	public interface ChannelView {
-	};
 
 	public String getId() {
 		return id;
@@ -108,25 +99,7 @@ public class AccountVO {
 			default:
 				break;
 			}
-			// if ("id".equalsIgnoreCase(f)) {
-			// id = null;
-			// } else if ("name".equalsIgnoreCase(f)) {
-			// name = null;
-			// } else if ("email".equalsIgnoreCase(f)) {
-			// email = null;
-			// }
 			System.out.println(System.nanoTime() - start);
 		}
-
-		// for(String f : fn) {
-		// try {
-		// long start = System.nanoTime();
-		// ReflectionUtils.findField(this.getClass(), f).set(this, null);
-		//
-		// System.out.println(System.nanoTime()- start);
-		// } catch (Exception e) {
-		// // ignore
-		// }
-		// }
 	}
 }

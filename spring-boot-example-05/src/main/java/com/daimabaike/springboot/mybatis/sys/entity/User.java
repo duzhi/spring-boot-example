@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Length;
 
 import com.daimabaike.springboot.mybatis.core.entity.BaseEntity;
 
-public class User extends BaseEntity<String> {
+public class User extends BaseEntity {
 
 	@NotNull(message="名称不能为空")
 	private String name;
@@ -35,13 +35,4 @@ public class User extends BaseEntity<String> {
 		return String.format("id=%s,name=%s,tel=%s", id, name, tel);
 	}
 	
-	@Override
-	public boolean validate() {
-		if("test".equals(tel)) {
-			verifymessage = "test abc";
-			return false;
-		}
-
-		return true;
-	}
 }

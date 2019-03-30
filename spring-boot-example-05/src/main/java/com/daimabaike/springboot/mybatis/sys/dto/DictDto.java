@@ -1,15 +1,7 @@
 package com.daimabaike.springboot.mybatis.sys.dto;
 
-public class DictDto {
+import com.daimabaike.springboot.mybatis.core.dto.BaseDto;
 
-	private Integer id;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
+public class DictDto extends BaseDto{
 
 }

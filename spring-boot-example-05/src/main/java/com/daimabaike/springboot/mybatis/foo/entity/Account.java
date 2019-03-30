@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 import com.daimabaike.springboot.mybatis.core.entity.BaseEntity;
 
-public class Account extends BaseEntity<BigInteger>{
+public class Account extends BaseEntity{
 
 	private BigInteger balance;
 

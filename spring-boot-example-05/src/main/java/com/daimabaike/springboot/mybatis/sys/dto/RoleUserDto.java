@@ -1,6 +1,8 @@
 package com.daimabaike.springboot.mybatis.sys.dto;
 
-public class RoleUserDto {
+import com.daimabaike.springboot.mybatis.core.dto.BaseDto;
+
+public class RoleUserDto extends BaseDto{
 
 	private String roleId;
 	private String userId;

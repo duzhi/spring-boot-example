@@ -1,6 +1,12 @@
 package com.daimabaike.springboot.webapp.common.interceptor;
 
-import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.Delayed;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.RunnableScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -18,46 +24,82 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 
 	protected Logger log = LoggerFactory.getLogger(this.getClass());
 
+	DelayQueue<RunnableScheduledFuture<Void>> dq = new DelayQueue<>();
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		log.info("getRequestURL={}",request.getRequestURL());
+		dq.add(new RunnableScheduledFuture<Void>() {
+
+			@Override
+			public void run() {
+				
+			}
+
+			@Override
+			public boolean cancel(boolean mayInterruptIfRunning) {
+				return false;
+			}
+
+			@Override
+			public boolean isCancelled() {
+				return false;
+			}
+
+			@Override
+			public boolean isDone() {
+				return false;
+			}
+
+			@Override
+			public Void get() throws InterruptedException, ExecutionException {
+				return null;
+			}
+
+			@Override
+			public Void get(long timeout, TimeUnit unit)
+					throws InterruptedException, ExecutionException, TimeoutException {
+				return null;
+			}
+
+			@Override
+			public long getDelay(TimeUnit unit) {
+				return 0;
+			}
+
+			@Override
+			public int compareTo(Delayed o) {
+				return 0;
+			}
+
+			@Override
+			public boolean isPeriodic() {
+				return false;
+			}
+			
+		});
 		
-		// 计算视图
+		log.info("RequestURL={}",request.getRequestURL());
+
+		Enumeration<String> es = request.getHeaderNames();
 		
-		String v = request.getParameter("v");
-		if( v!=null ) {
-			request.setAttribute("viewType", v);
+		while( es.hasMoreElements()) {
+			String name = es.nextElement();
+			System.out.println(name + ": " + request.getHeader(name));
+		
 		}
 		
-		Cookie[] cookies = request.getCookies();
-        log.info("cookies info:" + Arrays.toString(cookies));
- 
-		//
-//		get(TOKEN) = 
-//		if (null) {
-//			return ;	
+		// 计算视图
+//		String v = request.getParameter("v");
+//		if( v!=null ) {
+//			request.setAttribute("viewType", v);
 //		}
-		
-//		if (handler instanceof HandlerMethod) {
-//			HandlerMethod m = (HandlerMethod) handler;
-//
-//			SecurityPermission sp = m.getMethodAnnotation(SecurityPermission.class);
-//
-//			for (String permission : sp.value()) {
-//				log.info(permission);
-//			}
-//			
-//			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-//
-//			response.getWriter().write("{\"code\":\"403\",\"msg\":\"403 For\"}");
-//			return false;
-//		}
-        Cookie c = new Cookie("bbb", "adasd");
-        c.setHttpOnly(true);
-        
-		response.addCookie(c);
+//		
+//        Cookie c = new Cookie("bbb", "adasd");
+//        c.setHttpOnly(true);
+//        
+//		response.addCookie(c);
 		return true;
 	}
 

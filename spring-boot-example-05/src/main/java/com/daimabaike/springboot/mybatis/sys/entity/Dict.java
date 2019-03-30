@@ -2,7 +2,7 @@ package com.daimabaike.springboot.mybatis.sys.entity;
 
 import com.daimabaike.springboot.mybatis.core.entity.BaseEntity;
 
-public class Dict extends BaseEntity<Integer> {
+public class Dict extends BaseEntity {
 	
 	private String type;
 	private String value;

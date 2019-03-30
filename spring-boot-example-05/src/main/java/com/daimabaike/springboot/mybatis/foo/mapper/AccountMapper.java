@@ -10,8 +10,7 @@ import com.daimabaike.springboot.mybatis.foo.entity.Account;
 @Mapper
 public interface AccountMapper extends BaseMapper<Account,AccountDto>{
 
-//	@Override
 	@Select("select * from account where id=#{id}")
-	Account get(AccountDto id);
+	Account get(AccountDto dto);
 	
 }

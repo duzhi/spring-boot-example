@@ -15,6 +15,7 @@ public class UserService extends BaseService<UserMapper, User, UserDto> {
 	public int find(int time) {
 		return dao.find(time);
 	}
+	
 
 	/**
 	 * @param user
