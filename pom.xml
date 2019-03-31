@@ -51,11 +51,11 @@
 
 	<modules>
 		<module>spring-boot-example-console</module>
-		<module>spring-boot-example-02</module>
-		<module>spring-boot-example-03</module>
-		<module>spring-boot-example-04</module>
-		<module>spring-boot-example-05</module>
-		<module>spring-boot-example-06-job</module>
+		<module>spring-boot-example-web</module>
+		<module>spring-boot-example-webflux</module>
+		<module>spring-boot-example-core</module>
+		<module>spring-boot-example-rest</module>
+		<module>spring-boot-example-job</module>
 		<module>spring-boot-example-test</module>
 	</modules>
 </project>
