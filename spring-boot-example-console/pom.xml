@@ -6,7 +6,7 @@
 		<artifactId>spring-boot-example</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>spring-boot-example-01</artifactId>
+	<artifactId>spring-boot-example-console</artifactId>
 
 	<dependencies>
 		<!-- 命令行程序 starter -->

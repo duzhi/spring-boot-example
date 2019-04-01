@@ -6,7 +6,7 @@
 		<artifactId>spring-boot-example</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>spring-boot-example-02</artifactId>
+	<artifactId>spring-boot-example-web</artifactId>
 
 	<dependencies>
 		<dependency>
