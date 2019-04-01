@@ -16,7 +16,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.daimabaike.biz.common.BizException;
 import com.daimabaike.biz.common.Result;
-import com.daimabaike.biz.common.ResultUtils;
 import com.daimabaike.biz.common.web.BaseController;
 import com.daimabaike.biz.sys.vo.AccountVO;
 
@@ -69,7 +68,7 @@ public class AccountController2 extends BaseController{
 	
 	@RequestMapping(value = "api/{time}")
 	@ResponseBody
-	public Result<Object> restapi(@PathVariable String time) {
+	public Result<String> restapi(@PathVariable String time) {
 
 		System.out.println("login abcd page");
 
@@ -87,7 +86,11 @@ public class AccountController2 extends BaseController{
 //
 //		mono.block();
 
-		return ResultUtils.ok(r);
+
+		Result<String> result = new Result<>();
+		result.setResult(r);
+		
+		return result;
 	}
 
 	@RequestMapping(value="err500")

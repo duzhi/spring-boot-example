@@ -12,6 +12,8 @@ import org.springframework.web.client.HttpServerErrorException;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.daimabaike.biz.common.BizException;
+import com.daimabaike.biz.common.ErrorResult;
+import com.daimabaike.biz.common.ErrorResult.ErrorInfo;
 import com.daimabaike.biz.common.Result;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
@@ -24,8 +26,6 @@ public class CommonController extends BaseController {
 	public Result<Void> bizException(BizException t) {
 		
 		Result<Void> r = new Result<>();
-		r.setCode(40000);
-		r.setMessage(t.getMessage());
 
 		return r;
 	}
@@ -35,14 +35,12 @@ public class CommonController extends BaseController {
 	public Result<Void> bindException(BindException t) {
 		
 		Result<Void> r = new Result<>();
-		r.setCode(40000);
-		r.setMessage(t.getMessage());
 
 		return r;
 	}
 	
 	@ExceptionHandler(HttpMessageNotReadableException.class)
-	public Result<Void> httpMessageNotReadableException(HttpMessageNotReadableException t) {
+	public ErrorResult httpMessageNotReadableException(HttpMessageNotReadableException t) {
 		
 		log.info("getLocalizedMessage-="+t.getLocalizedMessage());
 		InvalidFormatException ie = (InvalidFormatException)t.getCause();
@@ -52,11 +50,8 @@ public class CommonController extends BaseController {
 
 		
 		ie.getPath().get(0).getFieldName();
-		Result<Void> r = new Result<>();
-		r.setCode(40000);
-		r.setMessage("OriginalMessage=" + ie.getOriginalMessage() +";\r\nMessage=" + ie.getMessage() +";\r\nPathReference="+ie.getPathReference()+""+ie.getPath());
+		return new ErrorResult("40000","OriginalMessage=" + ie.getOriginalMessage() +";\r\nMessage=" + ie.getMessage() +";\r\nPathReference="+ie.getPathReference()+""+ie.getPath());
 
-		return r;
 	}
 	
 	
@@ -74,14 +69,11 @@ public class CommonController extends BaseController {
 //		return r;
 	}
 	@ExceptionHandler(Throwable.class)
-	public Result<Void> ex(Throwable t) {
+	public ErrorResult ex(Throwable t) {
 		log.error("sys.error", t);
 
-		Result<Void> r = new Result<>();
-		r.setCode(50000);
-		r.setMessage("Client Error or Server Error");
 
-		return r;
+		return new ErrorResult("50000","Client Error or Server Error");
 	}
 	
 }

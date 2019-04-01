@@ -2,33 +2,14 @@ package com.daimabaike.biz.common;
 
 public class Result<T> {
 
-	private int code;
-	private String message;
-	
-	private T data;
+	private T result;
 
-	public int getCode() {
-		return code;
+	public T getResult() {
+		return result;
 	}
 
-	public void setCode(int code) {
-		this.code = code;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	
-	public T getData() {
-		return data;
-	}
-
-	public void setData(T data) {
-		this.data = data;
+	public void setResult(T result) {
+		this.result = result;
 	}
 
 }

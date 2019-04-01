@@ -1,7 +1,5 @@
 package com.daimabaike.biz.sys.web;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.daimabaike.biz.common.BizException;
 import com.daimabaike.biz.common.Result;
-import com.daimabaike.biz.common.ResultUtils;
 import com.daimabaike.biz.common.web.BaseController;
 import com.daimabaike.biz.sys.dto.UserDTO;
 import com.daimabaike.biz.sys.service.AccountService;
@@ -43,7 +40,10 @@ public class AccountController extends BaseController{
 		
 		System.out.println("login abcd");
 		// redis 存储
-		return ResultUtils.ok(String.format(" login at %s.", new Date()));
+		Result<String> r = new Result<>();
+		r.setResult("1");
+		return r;
+//				ResultUtils.ok(String.format(" login at %s.", new Date()));
 	}
 	
 //    @InitBinder
@@ -60,9 +60,7 @@ public class AccountController extends BaseController{
 //		userDTO.setSex(SexEnum.correct(userDTO.getSex()));
 		
 		Result<UserDTO> r = new Result<>();
-		r.setCode(0);
-		r.setMessage("OK");
-		r.setData(userDTO);
+		r.setResult(userDTO);
 		
 //		System.out.println(userDTO.getSex().name());
 //		System.out.println(userDTO.getSex().toString());

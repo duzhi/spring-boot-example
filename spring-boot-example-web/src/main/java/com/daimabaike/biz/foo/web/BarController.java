@@ -11,34 +11,25 @@ import com.daimabaike.biz.foo.dto.BarDTO;
 
 @RequestMapping("bar")
 @RestController
-public class BarController extends BaseController{
+public class BarController extends BaseController {
 
-	
-	@RequestMapping(value="query")
+	@RequestMapping(value = "query")
 	public String test(@RequestBody BarDTO dto) {
-		
-		if(dto.getType() == 2) {
+
+		if (dto.getType() == 2) {
 			throw new RuntimeException();
 		}
-		
-//		Result<String> r = new Result<>();
-//		
-//		r.setCode(0);
-//		r.setMessage("OK");
-//		r.setData(dto.toString());
-		
+
 		return dto.toString();
 	}
-	
+
 	@GetMapping("name/{channelId}/{type}")
 	public Result<BarDTO> name(BarDTO dto) {
-		
+
 		Result<BarDTO> r = new Result<>();
-		
-		r.setCode(0);
-		r.setMessage("OK");
-		r.setData(dto);
-		
+
+		r.setResult(dto);
+
 		return r;
 	}
 }
