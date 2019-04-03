@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "foo")
 public class FooController {
 
 	protected Logger log = LoggerFactory.getLogger(this.getClass());
@@ -59,23 +58,23 @@ public class FooController {
 	
 	@RequestMapping("a")
 	public String index(HttpServletRequest request, HttpServletResponse response, Model model) {
-		int count;
-		Object countObj = request.getSession().getAttribute("count");
-		if (countObj == null) {
-			count = 0;
-			Cookie c1 = new Cookie("_c1","a123");
-			c1.setMaxAge(24 * 3600);
-			c1.setPath("/");
-			response.addCookie(c1);
-			log.info("cookie c1 is {}", c1);
-		} else {
-			count = (Integer) countObj;
-			count++;
-		}
-		request.getSession().setAttribute("count", count);
+//		int count;
+//		Object countObj = request.getSession().getAttribute("count");
+//		if (countObj == null) {
+//			count = 0;
+//			Cookie c1 = new Cookie("_c1","a123");
+//			c1.setMaxAge(24 * 3600);
+//			c1.setPath("/");
+//			response.addCookie(c1);
+//			log.info("cookie c1 is {}", c1);
+//		} else {
+//			count = (Integer) countObj;
+//			count++;
+//		}
+//		request.getSession().setAttribute("count", count);
 
 		model.addAttribute("name", "zs");		
-		model.addAttribute("count", count);
+		model.addAttribute("count", 1);
 		return "a";
 	}
 }

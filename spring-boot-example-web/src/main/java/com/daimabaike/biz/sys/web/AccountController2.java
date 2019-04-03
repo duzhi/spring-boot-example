@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
@@ -28,8 +27,6 @@ public class AccountController2 extends BaseController{
 	@Autowired
 	RestTemplate restTemplate;
 	
-    protected WebClient webClient = WebClient.builder().baseUrl("").build();
-
     @RequestMapping(value="bizex/time" )
     @ResponseBody
 	public AccountVO bizex(int id) {

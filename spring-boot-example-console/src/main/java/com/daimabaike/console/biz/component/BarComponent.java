@@ -16,10 +16,14 @@ public class BarComponent implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(BarComponent.class);
 
 	@Override
-	public void run(String... args) throws Exception {
-		for (int i = 0; i < 3; i++) {
-			logger.info(" hello world222 at {}.", new Date());
-			Thread.sleep(1000);
+	public void run(String... args) {
+		for (int i = 0; i < 2; i++) {
+			logger.info(" hello world 1 at {}.", new Date());
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

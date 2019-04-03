@@ -13,7 +13,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.daimabaike.biz.common.BizException;
 import com.daimabaike.biz.common.ErrorResult;
-import com.daimabaike.biz.common.ErrorResult.ErrorInfo;
 import com.daimabaike.biz.common.Result;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 

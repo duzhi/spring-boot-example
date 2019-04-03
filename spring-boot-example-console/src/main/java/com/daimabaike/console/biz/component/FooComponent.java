@@ -16,9 +16,9 @@ public class FooComponent implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		for (int i = 0; i < 3; i++) {
-			logger.info(" hello world at {}.", new Date());
-			Thread.sleep(1000);
+		for (int i = 0; i < 2; i++) {
+			logger.info(" hello world 2 at {}.", new Date());
+			Thread.sleep(100);
 		}
 	}
 }

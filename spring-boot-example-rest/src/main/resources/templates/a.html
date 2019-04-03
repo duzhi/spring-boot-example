@@ -3,23 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <title>haleo</title>
-<script src="http://b.daimabaike.com:8090/ka2.js"></script>
 </head>
 <body>
 	<div th:text="${name}"></div>
 	<div th:text="${count}"></div>
 	
+	<input id="text" type="text" value="fdfdf" />
+    <button id="send" >发送消息</button>
 	<script th:inline="javascript">
 		!function(){
-			console.log(window);
-			document.cookie="_czzz=zz11";
-			document.cookie="_c2="+[[${name}]];
-			document.cookie="_czzz=zz22";
-			console.log(document.cookie);
-			
-			document.cookie="_czzz=";
-			console.log(document.cookie);
+			console.log("log");
 		}(window);
+		
+	    window.onload = function() {
+	        //var receiver = window.parent;
+	        var btn = document.getElementById('send');
+	        btn.addEventListener('click', function (e) {
+	            e.preventDefault();
+	            var val = document.getElementById('text').value;
+	            console.log(val)
+	            window.parent.postMessage("Hello "+val+"！", "http://localhost:8300");
+	            console.log(111)
+	        });
+	    }
 	</script>
 </body>
 </html>

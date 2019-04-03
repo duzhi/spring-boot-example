@@ -1,13 +1,25 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>存储</title>
+
+<script>
+window.addEventListener('message',function(e){
+    console.log("data:"+ e.origin +","+ e.data)
+});
+</script>
 </head>
+
 <body>
-login page
+	<h2>欢迎：</h2>
+	<div th:text="${name}"></div>
 
+	    <a href="/ztest.html" target="_blank">飞阿达的消息</button><br />
+	<iframe src="//b.daimabaike.com:8000/a" width="800px" height="600px">
+	</iframe>
 
-<form enctype="application/x-www-form-urlencoded">
-
-</form>
-
+	<script>
+	</script>
 </body>
 </html>
-
