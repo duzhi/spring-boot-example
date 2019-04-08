@@ -5,19 +5,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.daimabaike.biz.common.web.BaseController;
-import com.daimabaike.biz.foo.dto.BarDTO;
+import com.daimabaike.biz.foo.service.FooService;
 
 @Controller
 public class FooController extends BaseController {
 
 	Logger logger = LoggerFactory.getLogger(FooController.class);
-
+	
+	@Autowired
+	FooService fooService;
+	
 	@RequestMapping("/test")
 	@ResponseBody
 	public String test(HttpServletRequest req, HttpServletResponse resp) {
@@ -47,25 +51,12 @@ public class FooController extends BaseController {
 		return body;
 	}
 	
-	@RequestMapping("/")
-	public String home1(HttpServletRequest req) {
-		return "index.html";
-	}
-	
-	@RequestMapping("/umi/hello")
-	public String home(HttpServletRequest req) {
-		return "/umi/hello/index.html";
-	}
-	
-	@RequestMapping("/umi/hello/users.html")
-	public String hom1e(HttpServletRequest req) {
-		logger.info("*.html");
-		return "/umi/hello/index.html";
-	}
-	
-	@GetMapping("zz/{channelId}/{type}")
-	public String name(BarDTO dto) {
+	@GetMapping("foo/async")
+	@ResponseBody
+	public String name() {
 		
-		return "redirect:http://localhost:8300/bar/name/"+dto.getChannelId()+"/" + dto.getType();
+		fooService.foo();
+		logger.info("async");
+		return "async";
 	}
 }

@@ -1,6 +1,10 @@
 package com.daimabaike.biz.foo.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +19,21 @@ import com.daimabaike.biz.foo.service.BarService;
 @RestController
 public class BarController extends BaseController {
 
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+
+	@Bean("strTestBar")
+	public String createA() {
+		logger.info("strTestBar");
+		return "strTestBarrggr";
+	}
+	
 	@Autowired
 	BarService barService;
+	
+	@Autowired
+    @Qualifier("strTestBar")
+	String sss;
 
 	@RequestMapping(value = "query")
 	public String test(@RequestBody BarDTO dto) {
@@ -36,11 +53,20 @@ public class BarController extends BaseController {
 		// service2
 		Result<String> r = new Result<>();
 		try {
-
-			r.setResult(barService.order());
+			barService.order();
+			r.setResult("12311");
 		} catch (Exception e) {
 			r.setResult("ex:" + e.getMessage());
 		}
 		return r;
+	}
+	
+	@GetMapping("biz")
+	public String biz() {
+		
+		 String biz =  barService.biz();
+		logger.info("biz");
+		return biz + sss;
+		
 	}
 }
