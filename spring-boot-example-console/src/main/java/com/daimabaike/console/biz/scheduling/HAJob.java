@@ -13,38 +13,38 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Configuration
 @EnableScheduling
 @EnableAsync
-public class FooScheduling {
+public class HAJob {
 
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	/**
-	 * 注意下面两个方法会干扰，不能并行执行，A 方法在执行，则 B 方法会等待，待执行任务会加入队列
-	 */
-	
-	/**
-	 * 固定间隔时间开始执行（方法体的时间消耗不计算）
-	 */
 	@Scheduled(fixedRate = 10000)
 	@Async
 	public void fixedRate() {
 		logger.info("fixedRate hello world!" + "curr:" + new Date());
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-		}
+		
+		// 异步任务
+		
+		// 数据库：任务n。任务完成触发事件
+		
+		
+		// 1min级别事件
+		
+		// 按游戏ID 统计abcd
+		
+		// 
+		
+		// event(1);
+		// 
+		
+		
+		// 参数
+		
+		// 周期
+		
+		// Min1Event
 	}
-
-	/**
-	 * 每次执行完成后间隔指定时间开始执行
-	 */
-	@Scheduled(fixedDelay = 10000)
-	@Async
-	public void fixedDelay() {
-		logger.info("fixedDelay hello world!" + "curr:" + new Date());
-		try {
-			Thread.sleep(6000);
-		} catch (InterruptedException e) {
-		}
-	}
-
+	
+	
+	
+	
 }

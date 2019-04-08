@@ -21,6 +21,7 @@ import com.daimabaike.biz.sys.vo.AccountVO;
 //import reactor.core.publisher.Mono;
 //import reactor.core.scheduler.Schedulers;
 
+@RequestMapping("xxx")
 @Controller
 public class AccountController2 extends BaseController{
 
