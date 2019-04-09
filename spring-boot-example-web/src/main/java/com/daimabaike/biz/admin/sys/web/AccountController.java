@@ -1,4 +1,4 @@
-package com.daimabaike.biz.sys.web;
+package com.daimabaike.biz.admin.sys.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.daimabaike.biz.admin.sys.dto.UserDTO;
+import com.daimabaike.biz.admin.sys.service.AccountService;
+import com.daimabaike.biz.admin.sys.vo.AccountVO;
 import com.daimabaike.biz.common.BizException;
 import com.daimabaike.biz.common.Result;
 import com.daimabaike.biz.common.web.BaseController;
-import com.daimabaike.biz.sys.dto.UserDTO;
-import com.daimabaike.biz.sys.service.AccountService;
-import com.daimabaike.biz.sys.vo.AccountVO;
 //import com.fasterxml.jackson.annotation.JsonView;
 @Controller
+@RequestMapping("admin")
 public class AccountController extends BaseController{
 	
 	private AccountService accountService;
