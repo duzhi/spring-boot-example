@@ -1,13 +1,8 @@
-package com.daimabaike.biz.sys.web;
-
-//import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+package com.daimabaike.biz.admin.sys.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +15,7 @@ import com.daimabaike.biz.common.Result;
 import com.daimabaike.biz.common.web.BaseController;
 //import com.fasterxml.jackson.annotation.JsonView;
 @Controller
+@RequestMapping("admin")
 public class AccountController extends BaseController{
 	
 	private AccountService accountService;
@@ -32,20 +28,10 @@ public class AccountController extends BaseController{
 //	consumes： 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;
 //	produces:    指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回；
 
-	@RequestMapping(value="test")
-	public String login(HttpServletRequest request,HttpServletResponse rsp ,Model model) {
+	@RequestMapping(value="login")
+	public String login() {
 		
-	model.addAttribute("sid",request.getSession().getId());
-	
-	model.addAttribute("cfg1","{\"cfg1\":1}");
-	model.addAttribute("cfg2","{\"cfg2\":2}");
-	
-	model.addAttribute("sid",request.getSession().getId());
-	
-	
-	//rsp.addCookie(new Cookie("a","aaaa"));
-	
-		return "test";
+		return "login";
 //				ResultUtils.ok(String.format(" login at %s.", new Date()));
 	}
 	

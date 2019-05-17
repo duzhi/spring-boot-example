@@ -1,4 +1,4 @@
-package com.daimabaike.biz.sys.entity;
+package com.daimabaike.biz.admin.sys.entity;
 
 import com.daimabaike.biz.common.entity.BaseEntity;
 

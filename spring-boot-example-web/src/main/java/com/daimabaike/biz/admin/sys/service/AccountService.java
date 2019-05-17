@@ -1,12 +1,12 @@
-package com.daimabaike.biz.sys.service;
+package com.daimabaike.biz.admin.sys.service;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import com.daimabaike.biz.sys.dto.UserDTO;
-import com.daimabaike.biz.sys.vo.AccountVO;
+import com.daimabaike.biz.admin.sys.dto.UserDTO;
+import com.daimabaike.biz.admin.sys.vo.AccountVO;
 
 @Service
 public class AccountService {

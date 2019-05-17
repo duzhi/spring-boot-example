@@ -1,4 +1,4 @@
-package com.daimabaike.biz.sys.constant;
+package com.daimabaike.biz.admin.sys.constant;
 
 public enum HttpStatusEnum {
 

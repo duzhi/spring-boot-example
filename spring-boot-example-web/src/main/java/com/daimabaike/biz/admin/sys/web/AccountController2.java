@@ -1,4 +1,4 @@
-package com.daimabaike.biz.sys.web;
+package com.daimabaike.biz.admin.sys.web;
 
 import java.util.Date;
 
@@ -62,12 +62,6 @@ public class AccountController2 extends BaseController{
 		System.out.println("login abcd page");
 		
 		return "login";
-	}
-	@RequestMapping(value="page")
-	public String page() {
-		
-		
-		return "page";
 	}
 	
 	@RequestMapping(value = "api/{time}")
