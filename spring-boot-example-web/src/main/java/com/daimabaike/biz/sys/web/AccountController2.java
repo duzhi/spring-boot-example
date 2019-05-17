@@ -63,6 +63,12 @@ public class AccountController2 extends BaseController{
 		
 		return "login";
 	}
+	@RequestMapping(value="page")
+	public String page() {
+		
+		
+		return "page";
+	}
 	
 	@RequestMapping(value = "api/{time}")
 	@ResponseBody

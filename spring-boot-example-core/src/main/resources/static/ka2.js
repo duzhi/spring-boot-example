@@ -1,4 +1,5 @@
-!function(){console.log("hj.js");
-console.log(new Date());
-//document.cookie="_qa=afsf2; path=/";
+!function(){
+	console.log("ka2222.js");
+	
+	console.log(document.cookie)
 }()

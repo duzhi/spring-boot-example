@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>存储</title>
+
+<style>
+.schemaData{
+}
+</style>
+<script>
+
+var _zzz = _zzz || [];
+(function() {
+//  var hm = document.createElement("script");
+//hm.asyc=true;
+ // hm.src = "//www.testzzz.com:8300/a.js?a=3434";
+//  var s = document.getElementsByTagName("script")[0];
+//  s.parentNode.insertBefore(hm, s);
+
+})();
+
+</script>
+<script src="jquery-1.9.1.js"></script>
+</head>
+
+<body>
+	<h2>欢迎：</h2>
+	<div>
+	name:<p th:text="${name}"></p>
+	sid:<p th:text="${session.id}"></p>
+	sid:<p th:text="${sid}"  onclick="this.innerHTML=document.cookie;alert('123')"></p>
+	</div>
+	
+	    <a href="/ztest.html" target="_blank">飞阿达的消息</a><br />
+<textarea class="xxx">
+123
+</textarea>
+<textarea class="schemaData" style="display:none;" th:text="${cfg1}">
+
+cfg
+
+</textarea>
+<div class="schemaData">Hello</div>
+<textarea class="schemaData" style="display:none;" th:text="${cfg2}">
+
+cfg
+</textarea>
+
+<script>
+$(document).ready(function(){
+
+var a=$.find("textarea.schemaData");
+var aa = $.find(".xxx")[0];
+for(let i=0;i<a.length;i++){
+console.log(a[i].value)
+
+//aa.value+="\r"+a[i].value;
+}
+})
+</script>
+</body>
+</html>

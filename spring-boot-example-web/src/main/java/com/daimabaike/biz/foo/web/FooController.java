@@ -1,5 +1,7 @@
 package com.daimabaike.biz.foo.web;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,9 +24,24 @@ public class FooController extends BaseController {
 	@Autowired
 	FooService fooService;
 	
-	@RequestMapping("/test")
+	@RequestMapping("/sss")
 	@ResponseBody
-	public String test(HttpServletRequest req, HttpServletResponse resp) {
+	public Date sss() {
+		return fooService.foo();
+	}	
+	
+	@RequestMapping("/test11")
+	@ResponseBody
+	public String test(HttpServletRequest request, HttpServletResponse resp) {
+		
+		java.util.Enumeration<String> hn = request.getHeaderNames();
+		while(hn.hasMoreElements()) {
+			String name = hn.nextElement();
+			System.out.println(name + "=" + request.getHeader(name));
+		}
+		
+		request.getSession(false);
+		//.getServletContext();
 		
 		String body = "<!DOCTYPE html>\r\n" + 
 				"<html>\r\n" + 
@@ -47,7 +64,6 @@ public class FooController extends BaseController {
 				"	</div>\r\n" + 
 				"</body>\r\n" + 
 				"</html>";
-		resp.addHeader("Last-Modified", "Thu, 04 Oct 2018 09:01:58 GMT");
 		return body;
 	}
 	

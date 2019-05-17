@@ -45,6 +45,9 @@ public class FooScheduling {
 			Thread.sleep(6000);
 		} catch (InterruptedException e) {
 		}
+		
+		// 多个任务，
+		
 	}
 
 }

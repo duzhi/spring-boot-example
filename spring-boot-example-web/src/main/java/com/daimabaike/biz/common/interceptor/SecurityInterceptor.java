@@ -1,12 +1,6 @@
 package com.daimabaike.biz.common.interceptor;
 
 import java.util.Enumeration;
-import java.util.concurrent.DelayQueue;
-import java.util.concurrent.Delayed;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.RunnableScheduledFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,84 +16,36 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 @Component
 public class SecurityInterceptor extends HandlerInterceptorAdapter {
 
-	protected Logger log = LoggerFactory.getLogger(this.getClass());
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	DelayQueue<RunnableScheduledFuture<Void>> dq = new DelayQueue<>();
-	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-
-		dq.add(new RunnableScheduledFuture<Void>() {
-
-			@Override
-			public void run() {
-				
-			}
-
-			@Override
-			public boolean cancel(boolean mayInterruptIfRunning) {
-				return false;
-			}
-
-			@Override
-			public boolean isCancelled() {
-				return false;
-			}
-
-			@Override
-			public boolean isDone() {
-				return false;
-			}
-
-			@Override
-			public Void get() throws InterruptedException, ExecutionException {
-				return null;
-			}
-
-			@Override
-			public Void get(long timeout, TimeUnit unit)
-					throws InterruptedException, ExecutionException, TimeoutException {
-				return null;
-			}
-
-			@Override
-			public long getDelay(TimeUnit unit) {
-				return 0;
-			}
-
-			@Override
-			public int compareTo(Delayed o) {
-				return 0;
-			}
-
-			@Override
-			public boolean isPeriodic() {
-				return false;
-			}
-			
-		});
+		logger.info("RequestURL={}",request.getRequestURL());
+		logger.info("RequestURI={}",request.getRequestURI());
+		logger.info("getProtocol={}",request.getProtocol());
+//		logger.info("getProtocol={}",request.getProtocol());
 		
-		log.info("RequestURL={}",request.getRequestURL());
 
 		Enumeration<String> es = request.getHeaderNames();
 		
 		while( es.hasMoreElements()) {
 			String name = es.nextElement();
-			System.out.println(name + ": " + request.getHeader(name));
-		
+			logger.info(name + ": " + request.getHeader(name));
 		}
-		
-		// 计算视图
-//		String v = request.getParameter("v");
-//		if( v!=null ) {
-//			request.setAttribute("viewType", v);
+//		Cookie[] cs = request.getCookies();
+//		if(cs != null) {
+//			for(Cookie c :cs ) {
+//				logger.info(c.getName());
+//				logger.info(c.getValue());
+//				logger.info(c.getDomain());
+//			}
 //		}
-//		
-//        Cookie c = new Cookie("bbb", "adasd");
-//        c.setHttpOnly(true);
-//        
-//		response.addCookie(c);
+		
+		if(request.getRequestURL().indexOf(".js") > 0) {
+//			P3p: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"
+		response.setHeader("P3p", "CP=CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR");
+		}
 		return true;
 	}
 
@@ -111,9 +57,11 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 			Cookie c = new Cookie("aaa", "DADS");
 //			c.setHttpOnly(httpOnly);
 			response.addCookie(c);
-//			response.de
-//			response.
 		}
+		
+		
+		
+		
 	}
 	
 }

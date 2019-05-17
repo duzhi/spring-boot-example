@@ -2,6 +2,7 @@ package com.daimabaike.biz.sys.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.servlet.support.RequestContext;
 
 @Controller
 public class HomeController {
@@ -10,6 +11,7 @@ public class HomeController {
 	public String index() {
 		
 		System.out.println("index");
+		
 		
 		return "index";
 	}
