@@ -41,10 +41,9 @@ public class AccountController2 extends BaseController{
 		
 		
 		if(id == 0) {
-			BizException ex = new BizException();
+			BizException ex = new BizException("zero error");
 			ex.setStatus(400);
-			ex.setCode("zero");
-			ex.setMessage("zero error");
+			ex.setCode(40001);
 			throw ex;
 		}
 		AccountVO vo = new AccountVO();
@@ -86,7 +85,7 @@ public class AccountController2 extends BaseController{
 
 
 		Result<String> result = new Result<>();
-		result.setResult(r);
+		result.setData(r);
 		
 		return result;
 	}

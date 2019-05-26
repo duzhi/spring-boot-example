@@ -16,23 +16,23 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 @Component
 public class SecurityInterceptor extends HandlerInterceptorAdapter {
 
-	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+//	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		logger.info("RequestURL={}",request.getRequestURL());
-		logger.info("RequestURI={}",request.getRequestURI());
-		logger.info("getProtocol={}",request.getProtocol());
+//		logger.info("RequestURL={}",request.getRequestURL());
+//		logger.info("RequestURI={}",request.getRequestURI());
+//		logger.info("getProtocol={}",request.getProtocol());
 //		logger.info("getProtocol={}",request.getProtocol());
 		
 
 		Enumeration<String> es = request.getHeaderNames();
 		
-		while( es.hasMoreElements()) {
-			String name = es.nextElement();
-			logger.info(name + ": " + request.getHeader(name));
-		}
+//		while( es.hasMoreElements()) {
+//			String name = es.nextElement();
+//			logger.info(name + ": " + request.getHeader(name));
+//		}
 //		Cookie[] cs = request.getCookies();
 //		if(cs != null) {
 //			for(Cookie c :cs ) {

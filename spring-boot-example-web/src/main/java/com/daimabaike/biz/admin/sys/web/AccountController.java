@@ -49,7 +49,7 @@ public class AccountController extends BaseController{
 //		userDTO.setSex(SexEnum.correct(userDTO.getSex()));
 		
 		Result<UserDTO> r = new Result<>();
-		r.setResult(userDTO);
+		r.setData(userDTO);
 		
 //		System.out.println(userDTO.getSex().name());
 //		System.out.println(userDTO.getSex().toString());

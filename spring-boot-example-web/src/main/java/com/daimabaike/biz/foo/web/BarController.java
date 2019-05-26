@@ -63,9 +63,9 @@ public class BarController extends BaseController {
 		Result<String> r = new Result<>();
 		try {
 			barService.order();
-			r.setResult("12311");
+			r.setData("12311");
 		} catch (Exception e) {
-			r.setResult("ex:" + e.getMessage());
+			r.setData("ex:" + e.getMessage());
 		}
 		return r;
 	}
@@ -106,7 +106,7 @@ public class BarController extends BaseController {
 		DailyData d=new DailyData();
 d.setName("zzz");
 d.setAge(112);
-		r.setResult(d);
+		r.setData(d);
 //		result.put("data", new DailyData());
 		
 		

@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -40,10 +42,13 @@ public class BarControllerTest {
 
 		System.out.println(rsp.getStatusCodeValue());
 
-		System.out.println(rsp.getBody().getResult().getClass());
+		System.out.println(rsp.getBody().getData().getClass());
 
 	}
 	
-	
-
+	@Test
+	public void test1() {
+		HttpHeaders s = new HttpHeaders();
+		System.out.println(restTemplate.exchange("https://ad.toutiao.com/open_api/oauth2/access_token/", HttpMethod.GET, new HttpEntity<>(s), String.class));
+	}
 }

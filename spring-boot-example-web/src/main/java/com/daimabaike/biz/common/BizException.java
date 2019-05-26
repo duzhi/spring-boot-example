@@ -6,10 +6,14 @@ public class BizException extends RuntimeException{
 
 	private int status;
 	
-	private String code;
+	private int code;
 	
-	private String message;
-
+	public BizException() {
+		super();
+	}
+	public BizException(String message) {
+		super(message);
+	}
 	public int getStatus() {
 		return status;
 	}
@@ -18,20 +22,12 @@ public class BizException extends RuntimeException{
 		this.status = status;
 	}
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
 	}
 	
 }

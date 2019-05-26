@@ -3,10 +3,9 @@ package com.daimabaike.biz.common.web;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpServerErrorException;
 
 import com.alibaba.fastjson.JSONObject;
@@ -16,16 +15,16 @@ import com.daimabaike.biz.common.ErrorResult;
 import com.daimabaike.biz.common.Result;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
-@ControllerAdvice
-@RestController
+@RestControllerAdvice
 public class CommonController extends BaseController {
 
 	@ExceptionHandler(BizException.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
+//	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public Result<Void> bizException(BizException t) {
 		
 		Result<Void> r = new Result<>();
-
+r.setCode(t.getCode());
+r.setMessage(t.getMessage());
 		return r;
 	}
 	

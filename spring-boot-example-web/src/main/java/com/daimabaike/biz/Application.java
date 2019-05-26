@@ -2,6 +2,9 @@ package com.daimabaike.biz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+import com.daimabaike.biz.common.interceptor.ResultExcludeProperties;
 
 // @EnableAutoConfiguration 与 @SpringBootApplication区别
 
@@ -10,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //一个@SpringbootApplication相当于@Configuration,@EnableAutoConfiguration和 @ComponentScan 并具有他们的默认属性值。
 
 @SpringBootApplication
+//@EnableConfigurationProperties(ResultExcludeProperties.class)
 public class Application {
 
 	public static void main(String[] args) {
