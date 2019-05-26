@@ -1,4 +1,4 @@
-package com.daimabaike.biz.admin.sys.web;
+package com.daimabaike.biz.sys.web;
 
 import java.util.Date;
 
@@ -13,10 +13,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import com.daimabaike.biz.admin.sys.vo.AccountVO;
 import com.daimabaike.biz.common.BizException;
 import com.daimabaike.biz.common.Result;
 import com.daimabaike.biz.common.web.BaseController;
+import com.daimabaike.biz.sys.entity.AccountVO;
 
 //import reactor.core.publisher.Mono;
 //import reactor.core.scheduler.Schedulers;

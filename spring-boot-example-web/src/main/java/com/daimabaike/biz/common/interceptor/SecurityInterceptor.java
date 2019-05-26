@@ -1,13 +1,9 @@
 package com.daimabaike.biz.common.interceptor;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,7 +23,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 //		logger.info("getProtocol={}",request.getProtocol());
 		
 
-		Enumeration<String> es = request.getHeaderNames();
+//		Enumeration<String> es = request.getHeaderNames();
 		
 //		while( es.hasMoreElements()) {
 //			String name = es.nextElement();

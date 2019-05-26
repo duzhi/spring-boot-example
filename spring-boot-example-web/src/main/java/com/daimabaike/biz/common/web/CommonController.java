@@ -11,67 +11,64 @@ import org.springframework.web.client.HttpServerErrorException;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.daimabaike.biz.common.BizException;
-import com.daimabaike.biz.common.ErrorResult;
 import com.daimabaike.biz.common.Result;
+import com.daimabaike.biz.common.constant.ResultCodeEnum;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 @RestControllerAdvice
 public class CommonController extends BaseController {
 
 	@ExceptionHandler(BizException.class)
-//	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	// @ResponseStatus(HttpStatus.BAD_REQUEST)
 	public Result<Void> bizException(BizException t) {
-		
+
 		Result<Void> r = new Result<>();
-r.setCode(t.getCode());
-r.setMessage(t.getMessage());
+		r.setCode(t.getCode());
+		r.setMessage(t.getMessage());
 		return r;
 	}
-	
+
 	@ExceptionHandler(BindException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public Result<Void> bindException(BindException t) {
-		
+
 		Result<Void> r = new Result<>();
 
 		return r;
 	}
-	
+
 	@ExceptionHandler(HttpMessageNotReadableException.class)
-	public ErrorResult httpMessageNotReadableException(HttpMessageNotReadableException t) {
-		
-		log.info("getLocalizedMessage-="+t.getLocalizedMessage());
-		InvalidFormatException ie = (InvalidFormatException)t.getCause();
-		
-		
+	public Result<Void> httpMessageNotReadableException(HttpMessageNotReadableException t) {
+
+		log.info("getLocalizedMessage-=" + t.getLocalizedMessage());
+		InvalidFormatException ie = (InvalidFormatException) t.getCause();
+
 		log.info(ie.getMessage());
 
-		
 		ie.getPath().get(0).getFieldName();
-		return new ErrorResult("40000","OriginalMessage=" + ie.getOriginalMessage() +";\r\nMessage=" + ie.getMessage() +";\r\nPathReference="+ie.getPathReference()+""+ie.getPath());
+		return Result.fail(ResultCodeEnum.SYS11);
 
 	}
-	
-	
+
 	@ExceptionHandler(HttpServerErrorException.class)
 	public Result<Void> ex22(HttpServerErrorException t) {
 		log.error("sys.error", t);
 
-//		r.setCode(50000);
-		return JSONObject.parseObject(t.getResponseBodyAsString(), new TypeReference<Result<Void>>(){});
-		
-//		Result<Void> r = new Result<>();
-//		r.setCode(50000);
-//		r.setMessage("Client Error or Server Error");
-//
-//		return r;
+		// r.setCode(50000);
+		return JSONObject.parseObject(t.getResponseBodyAsString(), new TypeReference<Result<Void>>() {
+		});
+
+		// Result<Void> r = new Result<>();
+		// r.setCode(50000);
+		// r.setMessage("Client Error or Server Error");
+		//
+		// return r;
 	}
+
 	@ExceptionHandler(Throwable.class)
-	public ErrorResult ex(Throwable t) {
+	public Result<Void> ex(Throwable t) {
 		log.error("sys.error", t);
-
-
-		return new ErrorResult("50000","Client Error or Server Error");
+		return Result.fail(ResultCodeEnum.SYS11);
 	}
-	
+
 }

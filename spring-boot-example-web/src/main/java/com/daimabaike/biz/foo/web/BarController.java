@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.daimabaike.biz.common.Result;
 import com.daimabaike.biz.common.web.BaseController;
-import com.daimabaike.biz.foo.dto.BarDTO;
+import com.daimabaike.biz.foo.entity.BarDTO;
 import com.daimabaike.biz.foo.entity.DailyData;
 import com.daimabaike.biz.foo.service.BarService;
 

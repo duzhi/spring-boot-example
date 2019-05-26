@@ -1,4 +1,4 @@
-package com.daimabaike.biz.admin.sys.dto;
+package com.daimabaike.biz.sys.entity;
 
 import javax.validation.constraints.NotNull;
 

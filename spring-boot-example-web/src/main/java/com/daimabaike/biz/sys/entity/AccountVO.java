@@ -1,4 +1,4 @@
-package com.daimabaike.biz.admin.sys.vo;
+package com.daimabaike.biz.sys.entity;
 
 import java.util.Date;
 

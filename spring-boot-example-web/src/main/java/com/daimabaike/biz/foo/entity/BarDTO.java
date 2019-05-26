@@ -1,4 +1,4 @@
-package com.daimabaike.biz.foo.dto;
+package com.daimabaike.biz.foo.entity;
 
 public class BarDTO {
 
