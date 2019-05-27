@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.daimabaike.biz.common.BizException;
 import com.daimabaike.biz.common.Result;
 import com.daimabaike.biz.common.web.BaseController;
-import com.daimabaike.biz.sys.entity.AccountVO;
-import com.daimabaike.biz.sys.entity.UserDTO;
+import com.daimabaike.biz.sys.model.AccountResponse;
+import com.daimabaike.biz.sys.model.UserRequest;
 import com.daimabaike.biz.sys.service.AccountService;
 
 @Controller
@@ -45,10 +45,10 @@ public class AccountController extends BaseController{
 //    }
 
 	@RequestMapping("aaa")
-	public Result<UserDTO> aaa(UserDTO userDTO) {
+	public Result<UserRequest> aaa(UserRequest userDTO) {
 //		userDTO.setSex(SexEnum.correct(userDTO.getSex()));
 		
-		Result<UserDTO> r = new Result<>();
+		Result<UserRequest> r = new Result<>();
 		r.setData(userDTO);
 		
 //		System.out.println(userDTO.getSex().name());
@@ -59,7 +59,7 @@ public class AccountController extends BaseController{
 	}
 	
 	@RequestMapping("bb")
-	public UserDTO b(UserDTO userDTO) {
+	public UserRequest b(UserRequest userDTO) {
 		if(11==userDTO.getId()) {
 			throw new BizException();
 		}
@@ -67,14 +67,14 @@ public class AccountController extends BaseController{
 	}
 	
 	@RequestMapping(value="bb2",produces=MediaType.TEXT_PLAIN_VALUE)//consumes=MediaType.TEXT_PLAIN_VALUE, ,
-	public String b2(UserDTO userDTO) {
+	public String b2(UserRequest userDTO) {
 		
 		
 		return "1";
 	}
 	
 	@RequestMapping("view")
-	public AccountVO mm(@ModelAttribute UserDTO userDTO,@RequestAttribute int viewType) {
+	public AccountResponse mm(@ModelAttribute UserRequest userDTO,@RequestAttribute int viewType) {
 		
 		userDTO.setViewType(viewType);
 		return accountService.query(userDTO);
@@ -82,7 +82,7 @@ public class AccountController extends BaseController{
 	}
 	
 	@RequestMapping("view2")
-	public AccountVO mm1(@ModelAttribute UserDTO userDTO) {//,@RequestAttribute(required=false) String viewType
+	public AccountResponse mm1(@ModelAttribute UserRequest userDTO) {//,@RequestAttribute(required=false) String viewType
 //		int type = 0;
 //		try {
 //			type = Integer.parseInt(viewType);
@@ -107,7 +107,7 @@ public class AccountController extends BaseController{
 	
 	
 	@RequestMapping("view22")
-	public AccountVO xxxx(@ModelAttribute UserDTO userDTO) {
+	public AccountResponse xxxx(@ModelAttribute UserRequest userDTO) {
 		return null;
 	}
 	

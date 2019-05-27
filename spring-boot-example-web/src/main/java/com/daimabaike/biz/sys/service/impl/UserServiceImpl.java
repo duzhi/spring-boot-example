@@ -20,4 +20,9 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	@Override
+	public void getxx(User u) {
+		
+	}
+
 }

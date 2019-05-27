@@ -1,8 +1,9 @@
-package com.daimabaike.biz.sys.entity;
+package com.daimabaike.biz.sys.model;
 
 import javax.validation.constraints.NotNull;
 
-public class UserDTO {
+//
+public class UserRequest {
 
 	int id;
 	@NotNull
@@ -11,6 +12,12 @@ public class UserDTO {
 	//@DecimalMax("1111.22")
 	String sex;
 
+	//学历
+	//学历Lable
+	
+	private int xx;
+	private String xxLable;
+	
 	int viewType;
 	
 	String[] filter;

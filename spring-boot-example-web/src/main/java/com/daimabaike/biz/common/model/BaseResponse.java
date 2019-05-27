@@ -1,6 +1,6 @@
-package com.daimabaike.biz.common.vo;
+package com.daimabaike.biz.common.model;
 
-public class BaseVo {
+public class BaseResponse {
 
 	private String requestId;
 	

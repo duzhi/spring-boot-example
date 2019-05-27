@@ -1,13 +1,13 @@
-package com.daimabaike.biz.sys.entity;
+package com.daimabaike.biz.sys.model;
 
 import java.util.Date;
 
-import com.daimabaike.biz.common.vo.BaseVo;
+import com.daimabaike.biz.common.model.BaseResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
-public class AccountVO extends BaseVo {
+public class AccountResponse extends BaseResponse {
 
 	private String id;
 

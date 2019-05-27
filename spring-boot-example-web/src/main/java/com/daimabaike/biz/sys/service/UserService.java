@@ -16,4 +16,7 @@ public interface UserService {
     @CacheInvalidate(name="userCache-", key="#userId")
     void deleteUser(long userId);
 
+    
+    void getxx(User u);
+    
 }

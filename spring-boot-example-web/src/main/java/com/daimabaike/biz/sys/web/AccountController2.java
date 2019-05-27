@@ -16,7 +16,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.daimabaike.biz.common.BizException;
 import com.daimabaike.biz.common.Result;
 import com.daimabaike.biz.common.web.BaseController;
-import com.daimabaike.biz.sys.entity.AccountVO;
+import com.daimabaike.biz.sys.model.AccountResponse;
 
 //import reactor.core.publisher.Mono;
 //import reactor.core.scheduler.Schedulers;
@@ -30,7 +30,7 @@ public class AccountController2 extends BaseController{
 	
     @RequestMapping(value="bizex/time" )
     @ResponseBody
-	public AccountVO bizex(int id) {
+	public AccountResponse bizex(int id) {
 		
 		System.out.println("bizex");
 		
@@ -46,7 +46,7 @@ public class AccountController2 extends BaseController{
 			ex.setCode(40001);
 			throw ex;
 		}
-		AccountVO vo = new AccountVO();
+		AccountResponse vo = new AccountResponse();
 		vo.setId("test-" + id);
 		vo.setCreateTime(new Date());
 		

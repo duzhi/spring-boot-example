@@ -5,15 +5,15 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import com.daimabaike.biz.sys.entity.AccountVO;
-import com.daimabaike.biz.sys.entity.UserDTO;
+import com.daimabaike.biz.sys.model.AccountResponse;
+import com.daimabaike.biz.sys.model.UserRequest;
 
 @Service
 public class AccountService {
 
 	
-	public AccountVO query(UserDTO userDTO) {
-		AccountVO vo = new AccountVO();
+	public AccountResponse query(UserRequest userDTO) {
+		AccountResponse vo = new AccountResponse();
 		
 		Set<String> filterSet = new HashSet<>();
 		
