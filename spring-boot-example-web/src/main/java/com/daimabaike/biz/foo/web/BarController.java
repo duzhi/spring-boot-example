@@ -45,7 +45,7 @@ public class BarController extends BaseController {
 	String sss;
 
 	@RequestMapping(value = "query")
-	public String test(@RequestBody BarDTO dto) {
+	public String query(@RequestBody BarDTO dto) {
 
 		if (dto.getType() == 2) {
 			throw new RuntimeException();

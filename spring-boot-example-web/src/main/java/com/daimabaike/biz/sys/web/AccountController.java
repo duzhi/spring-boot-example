@@ -13,7 +13,7 @@ import com.daimabaike.biz.common.web.BaseController;
 import com.daimabaike.biz.sys.entity.AccountVO;
 import com.daimabaike.biz.sys.entity.UserDTO;
 import com.daimabaike.biz.sys.service.AccountService;
-//import com.fasterxml.jackson.annotation.JsonView;
+
 @Controller
 @RequestMapping("admin")
 public class AccountController extends BaseController{

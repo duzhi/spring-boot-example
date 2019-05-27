@@ -51,12 +51,15 @@ public class RestTemplateConfig {
 			
 			@Override
 			public boolean hasError(ClientHttpResponse response) throws IOException {
+				response.getStatusCode().is4xxClientError();
+				
+//				response.getBody().
 				return false;
 			}
 			
 			@Override
 			public void handleError(ClientHttpResponse response) throws IOException {
-				
+//				response.getStatusText()
 			}
 		});
         
