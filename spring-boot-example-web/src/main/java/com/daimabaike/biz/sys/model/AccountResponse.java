@@ -3,6 +3,7 @@ package com.daimabaike.biz.sys.model;
 import java.util.Date;
 
 import com.daimabaike.biz.common.model.BaseResponse;
+import com.daimabaike.biz.sys.cons.XueliEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -22,6 +23,28 @@ public class AccountResponse extends BaseResponse {
 	private String deptNo;
 
 	private String email;
+
+	private int xx;
+	
+	private String xxLab;
+	
+	public int getXx() {
+		return xx;
+	}
+
+	public void setXx(int xx) {
+		this.xx = xx;
+		
+		setXxLab(XueliEnum.valueOf(xx).getName());
+	}
+
+	public String getXxLab() {
+		return xxLab;
+	}
+
+	public void setXxLab(String xxLab) {
+		this.xxLab = xxLab;
+	}
 
 	public String getId() {
 		return id;

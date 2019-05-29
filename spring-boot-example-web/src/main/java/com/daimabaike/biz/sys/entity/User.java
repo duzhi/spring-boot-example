@@ -1,29 +1,34 @@
 package com.daimabaike.biz.sys.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.validation.constraints.NotNull;
+
 import com.daimabaike.biz.common.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-// 为了简单处理，dto vo 辅助字段，实体类自己字段相关的辅助信息，
-// 如查询请求的范围、响应的字典标签：枚举，字典、一对一实体 ID 名称映射）放到 entity，需注明用途
-// 一对一、一对多，多对多如果双方参与的字段很多，建议单独建 dto、vo
-@JsonInclude(Include.NON_NULL)
+// 为了简单处理，DTO、VO 的辅助字段是实体类自己字段相关的辅助信息，如查询请求的日期范围、响应的字典标签：
+// 枚举名称，字典名称、一对一关联实体 ID 名称映射，可以放到 entity，需注明来源（请求还是响应）和用途。
+// 如果结果中有很多两个及以上表参与的字段（一对一、一对多），建议单独建 DTO、VO（或request、response）；
+// 多对多建议固定一方 id，页面展示一方少量明细，另一方展示列表的方式来呈现信息（如用户角色信息关联表，可以在用户角色分配页展示角色列表）
+@JsonInclude(value=Include.NON_NULL)
 public class User extends BaseEntity {
 
+	@NotNull(message="名称不能为空")
 	private String name;
 	
 	private String deptNo;
 	
-	private String email;
+	private String email = "";
 	
 	private String passWdMd5;
 	
 	private Integer passWdSalt;
 	
-	// 关联的角色
-	private int roleId;
-	private String roleName;
-	
+	// 关联的角色列表
+	private List<Role> roles = new ArrayList<>();
 	
 	public String getName() {
 		return name;
@@ -65,20 +70,12 @@ public class User extends BaseEntity {
 		this.passWdSalt = passWdSalt;
 	}
 
-	public int getRoleId() {
-		return roleId;
+	public List<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRoleId(int roleId) {
-		this.roleId = roleId;
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
-	public String getRoleName() {
-		return roleName;
-	}
-
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
-	
 }

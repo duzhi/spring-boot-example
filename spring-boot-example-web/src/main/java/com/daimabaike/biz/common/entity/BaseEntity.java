@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BaseEntity {
 
-	private String id;
+	protected Long id;
 
 	private String ip;
 
@@ -12,11 +12,11 @@ public class BaseEntity {
 
 	private Date updateTime;
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

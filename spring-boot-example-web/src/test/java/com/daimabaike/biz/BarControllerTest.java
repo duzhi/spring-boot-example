@@ -39,6 +39,13 @@ public class BarControllerTest {
 
 		ResponseEntity<Result<DailyData>> rsp = restTemplate.exchange(url, HttpMethod.GET, null/* httpEntity */,
 				responseType);
+		
+		HttpHeaders s = new HttpHeaders();
+		s.add("Accept", "application/json, text/plain, */*");
+		s.add("x-app", "123");
+		HttpEntity<String> en = new HttpEntity<>("body", s);
+		
+		restTemplate.exchange(url, HttpMethod.GET, en, responseType);
 
 		System.out.println(rsp.getStatusCodeValue());
 
@@ -46,7 +53,7 @@ public class BarControllerTest {
 
 	}
 	
-	@Test
+//	@Test
 	public void test1() {
 		HttpHeaders s = new HttpHeaders();
 		System.out.println(restTemplate.exchange("https://ad.toutiao.com/open_api/oauth2/access_token/", HttpMethod.GET, new HttpEntity<>(s), String.class));

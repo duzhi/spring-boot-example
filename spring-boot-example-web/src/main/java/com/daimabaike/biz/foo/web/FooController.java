@@ -9,16 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
 import com.daimabaike.biz.common.BizException;
 import com.daimabaike.biz.common.interceptor.ResultRewrite;
 import com.daimabaike.biz.common.web.BaseController;
+import com.daimabaike.biz.foo.client.FooClient;
 import com.daimabaike.biz.foo.service.FooService;
+import com.daimabaike.biz.sys.entity.User;
 
 @Controller
 @ResultRewrite
@@ -28,6 +32,13 @@ public class FooController extends BaseController {
 
 	@Autowired
 	FooService fooService;
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@Autowired
+	@Qualifier("ok3RestTemplate")
+	private RestTemplate ok3RestTemplate;
 
 	@RequestMapping("/void")
 	@ResponseBody
@@ -44,7 +55,16 @@ public class FooController extends BaseController {
 	public int empty() {
 		return 123;
 	}
-
+	
+	@Autowired
+	FooClient FooClient;
+	@RequestMapping(value = "/user")
+	@ResponseBody
+	public User ddd() {
+		
+		return FooClient.login();
+	
+	}
 	@RequestMapping("/object")
 	@ResponseBody
 	@ResultRewrite
@@ -62,9 +82,12 @@ public class FooController extends BaseController {
 	public String name() {
 
 		fooService.foo();
-		logger.info("async");
+		
+		logger.info("async,{},{}", restTemplate.getRequestFactory().getClass().getName(), ok3RestTemplate.getRequestFactory().getClass().getName());
 		return "async";
+		
 	}
+
 	@RequestMapping("/test11")
 	@ResponseBody
 	public String test(HttpServletRequest request, HttpServletResponse resp) {

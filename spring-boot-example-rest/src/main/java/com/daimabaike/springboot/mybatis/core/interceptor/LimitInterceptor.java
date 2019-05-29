@@ -32,7 +32,7 @@ public class LimitInterceptor implements HandlerInterceptor{
 		try {
 			System.out.println("liuliang error");
 			PrintWriter pw=	response.getWriter();
-			pw.println(JSONObject.toJSONString(Result.fail2(410000, "liuliang error")));
+			pw.println(JSONObject.toJSONString(Result.fail(40100, "liuliang error")));
 			
 
 			

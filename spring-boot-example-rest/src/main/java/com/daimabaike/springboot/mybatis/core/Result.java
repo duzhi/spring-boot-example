@@ -1,5 +1,9 @@
 package com.daimabaike.springboot.mybatis.core;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_NULL)
 public class Result<T> {
 
 	private int code;
@@ -12,7 +16,7 @@ public class Result<T> {
 	public static <T> Result<T> ok() {
 		Result<T> r = new Result<>();
 		r.setCode(0);
-		r.setMessage("SUCC");
+		r.setMessage("success");
 		return r;
 	}
 
@@ -35,15 +39,15 @@ public class Result<T> {
 		return r;
 	}
 
-	public static <T> Result<T> fail2(int code, String message) {
+	public static <T> Result<T> fail(int code, String message) {
 		Result<T> r = new Result<>();
 		r.setCode(code);
 		r.setMessage(message);
 		return r;
 	}
 
-	public static <T> Result<T> fail2(int code, String message, T t) {
-		Result<T> r = fail2(code, message);
+	public static <T> Result<T> fail(int code, String message, T t) {
+		Result<T> r = fail(code, message);
 		r.setData(t);
 		return r;
 	}

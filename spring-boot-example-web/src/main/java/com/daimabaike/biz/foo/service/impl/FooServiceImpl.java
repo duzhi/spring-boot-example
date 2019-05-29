@@ -2,26 +2,22 @@ package com.daimabaike.biz.foo.service.impl;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.daimabaike.biz.foo.service.FooService;
 
 @Service
-public class FooServiceImpl implements FooService{
+public class FooServiceImpl implements FooService {
+
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Override
 	public Date foo() {
-		System.out.println("foo");
-		
-		// 
-		String param = null;
-		getxx(param);
-		
+		logger.info("FooServiceImpl foo");
+
 		return new Date();
 	}
-	
-	protected void getxx(String param) {
-		System.out.println("foo getxx");
-	}
-	
+
 }

@@ -29,21 +29,26 @@ public class UserController extends BaseController {
 	private UserService userService;
 	@Autowired
 	private UserBatchService userBatchService;
-	
+
 	@RequestMapping(value = "/batch")
 	public Result<String> get() {
-		return Result.ok(userBatchService.doBiz() +"");
+		return Result.ok(userBatchService.doBiz() + "");
 	}
+
 	@RequestMapping(value = "/update")
 	public Result<String> update() {
-		return Result.ok(userService.update(new User()) +"");
+		return Result.ok(userService.update(new User()) + "");
 	}
+
 	@RequestMapping(value = "/user/{id}")
-	public User get(UserDto userDto) {
+	public Result<User> get(UserDto userDto) {
 		User user = userService.get(userDto);
+		if (user == null) {
+			return Result.fail("user 不存在");
+		}
 
 		logger.info(user.toString());
-		return user;
+		return Result.ok(user);
 	}
 
 	@RequestMapping(value = "/user/for-update")
@@ -75,37 +80,30 @@ public class UserController extends BaseController {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
-			PrintWriter pw=	response.getWriter();
+			PrintWriter pw = response.getWriter();
 			pw.println(JSONObject.toJSONString(Result.ok(user)));
-			
+
 			pw.flush();
 			pw.close();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		System.out.println("users t34t4t3t");
-//		return Result.ok(user);
+		// return Result.ok(user);
 	}
 
 	@RequestMapping("error500")
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public Result<Void> ERR500() {
-		
-		try {
-			Thread.sleep(800);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		return Result.fail("500 test");
+		return Result.fail(50001, "500 error");
 	}
-	
+
 	@RequestMapping("error400")
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public Result<User> dadsad() {
-		return Result.fail("400 test");
+		return Result.fail(40001, "400 error");
 	}
 }
