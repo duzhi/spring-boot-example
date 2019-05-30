@@ -52,21 +52,7 @@ public class RestTemplateConfig {
 		// } }, new SecureRandom());
 		// HttpsURLConnection.setDefaultSSLSocketFactory(context.getSocketFactory());
 
-		RestTemplate restTemplate = new RestTemplate();
-////		factory
-		ClientHttpRequestInterceptor inter = new ClientHttpRequestInterceptor() {
-
-			@Override
-			public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
-					throws IOException {
-
-				ClientHttpResponse resp = execution.execute(request, body);
-
-				return resp;
-			}
-
-		};
-		restTemplate.getInterceptors().add(inter);
+		RestTemplate restTemplate = new RestTemplate(factory);
 
 		logger.info("restTemplate.getInterceptors()={}", restTemplate.getInterceptors().toString());
 

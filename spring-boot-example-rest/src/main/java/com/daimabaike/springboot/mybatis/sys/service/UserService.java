@@ -5,27 +5,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.daimabaike.springboot.mybatis.core.Result;
 import com.daimabaike.springboot.mybatis.core.service.BaseService;
-import com.daimabaike.springboot.mybatis.sys.dto.UserDto;
 import com.daimabaike.springboot.mybatis.sys.entity.User;
 import com.daimabaike.springboot.mybatis.sys.mapper.UserMapper;
 
 @Service
-public class UserService extends BaseService<UserMapper, User, UserDto> {
+public class UserService extends BaseService<UserMapper, User> {
 
 	public int find(int time) {
 		return dao.find(time);
 	}
 	
-
 	/**
 	 * @param user
 	 * @return
 	 */
 	@Transactional
-	public Result<User> doBiz(UserDto userDto) {
+	public Result<User> doBiz(User user) {
 		logger.info("start doBiz");
 
-		User u = this.queryForUpdateOne(userDto);
+		User u = this.queryForUpdateOne(user);
 
 		logger.info(u);
 

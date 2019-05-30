@@ -1,4 +1,4 @@
-package com.daimabaike.springboot.mybatis.util;
+package com.daimabaike.springboot.mybatis.core.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

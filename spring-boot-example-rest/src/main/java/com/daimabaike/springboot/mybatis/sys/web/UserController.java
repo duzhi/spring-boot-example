@@ -3,6 +3,8 @@ package com.daimabaike.springboot.mybatis.sys.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSONObject;
 import com.daimabaike.springboot.mybatis.core.Result;
 import com.daimabaike.springboot.mybatis.core.web.BaseController;
-import com.daimabaike.springboot.mybatis.sys.dto.UserDto;
 import com.daimabaike.springboot.mybatis.sys.entity.User;
 import com.daimabaike.springboot.mybatis.sys.service.UserBatchService;
 import com.daimabaike.springboot.mybatis.sys.service.UserService;
@@ -41,8 +42,16 @@ public class UserController extends BaseController {
 	}
 
 	@RequestMapping(value = "/user/{id}")
-	public Result<User> get(UserDto userDto) {
-		User user = userService.get(userDto);
+	public Result<User> get(User user) {
+		int slp = new Random().nextInt(10) + 20;
+		logger.info("slp={}",slp);
+		try {
+			TimeUnit.SECONDS.sleep(slp);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		user = userService.get(user);
 		if (user == null) {
 			return Result.fail("user 不存在");
 		}
@@ -50,12 +59,12 @@ public class UserController extends BaseController {
 		logger.info(user.toString());
 		return Result.ok(user);
 	}
-
+	
 	@RequestMapping(value = "/user/for-update")
-	public Result<User> forUpdate(UserDto userDto) {
-		logger.info("name={}", userDto.getName());
+	public Result<User> forUpdate(User user) {
+		logger.info("name={}", user.getName());
 
-		return userService.doBiz(userDto);
+		return userService.doBiz(user);
 	}
 
 	@RequestMapping(value = "/user/test-result")

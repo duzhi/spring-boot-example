@@ -70,5 +70,6 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 		log.info("cost={}", System.currentTimeMillis() - start);
 		aa.remove();
 
+//		response.get
 	}
 }
