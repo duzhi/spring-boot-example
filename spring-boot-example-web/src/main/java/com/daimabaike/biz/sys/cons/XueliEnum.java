@@ -2,7 +2,7 @@ package com.daimabaike.biz.sys.cons;
 
 public enum XueliEnum {
 
-	aa(1, "aa"), bb(2, "bb");
+	GZ(1, "高中"), ZK(1, "专科"), BK(2, "本科");
 
 	private final int value;
 

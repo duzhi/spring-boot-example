@@ -31,7 +31,7 @@ public class MockMvcTests {
 
 	@Test
 	public void exampleTest() throws Exception {
-		System.out.println(XueliEnum.aa.name());
+		System.out.println(XueliEnum.GZ.name());
 		
 		MvcResult result = this.mvc.perform(MockMvcRequestBuilders.get("/sss"))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
