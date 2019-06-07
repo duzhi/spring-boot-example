@@ -28,6 +28,10 @@ hs_err_pid*
 
 */.classpath
 
-*/target
+*/target/
+*/*.iml
+
 
 */.springBeans
+/.idea/
+/*.iml

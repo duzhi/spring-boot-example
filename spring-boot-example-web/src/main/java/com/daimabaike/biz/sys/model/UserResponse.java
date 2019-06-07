@@ -9,11 +9,4 @@ public class UserResponse {
 	
 	// pageinfo
 	
-	// 
-	public static class ss{
-
-		private int xx;
-		
-	}
-	
 }

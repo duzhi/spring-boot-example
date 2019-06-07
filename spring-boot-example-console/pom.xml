@@ -9,16 +9,15 @@
 	<artifactId>spring-boot-example-console</artifactId>
 
 	<dependencies>
-		<!-- 命令行程序 starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-		<dependency>
+		<!---dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
-		</dependency>
+		</dependency-->
 	</dependencies>
 
 	<build>

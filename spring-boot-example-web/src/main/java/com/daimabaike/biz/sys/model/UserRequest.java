@@ -12,12 +12,6 @@ public class UserRequest {
 	//@DecimalMax("1111.22")
 	String sex;
 
-	//学历
-	//学历Lable
-	
-	private int xx;
-	private String xxLable;
-	
 	int viewType;
 	
 	String[] filter;
