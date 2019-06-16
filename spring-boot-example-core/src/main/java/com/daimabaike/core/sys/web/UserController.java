@@ -2,7 +2,7 @@ package com.daimabaike.core.sys.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +15,7 @@ public class UserController {
 
 	protected Logger logger = LoggerFactory.getLogger(UserController.class);
 
-	//@Autowired
+	@Autowired
 	private RedisService<String,String,User> redisService;
 
 //	public RedisService getRedisService() {

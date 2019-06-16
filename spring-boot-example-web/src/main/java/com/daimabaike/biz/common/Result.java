@@ -1,6 +1,5 @@
 package com.daimabaike.biz.common;
 
-import com.daimabaike.biz.common.constant.ResultCodeEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -51,5 +50,7 @@ public class Result<T> {
 	public void setData(T data) {
 		this.data = data;
 	}
+
+
 
 }

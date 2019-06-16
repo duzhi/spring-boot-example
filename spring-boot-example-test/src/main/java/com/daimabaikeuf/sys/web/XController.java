@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
+//import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.daimabaikeuf.sys.service.XAsyncService;
 
 @Controller
@@ -33,7 +33,7 @@ public class XController {
 	
 //    @NacosValue(value="${v}", autoRefreshed = true)
 //    private String v;
-    @NacosValue(value="${abc:abc-default}", autoRefreshed = true)
+//    @NacosValue(value="${abc:abc-default}", autoRefreshed = true)
     private String abc;
     
 	@RequestMapping("mkd")

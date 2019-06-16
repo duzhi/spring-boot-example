@@ -20,7 +20,7 @@ public class WebClientTests {
 	@Test
 	public void exampleTest2() {
 		this.webClient.get().uri("/?a=WebClientTests").exchange().expectStatus().isOk().expectBody(String.class)
-				.isEqualTo("Hello World err");
+				.isEqualTo("Hello World :null");
 	}
 
 }

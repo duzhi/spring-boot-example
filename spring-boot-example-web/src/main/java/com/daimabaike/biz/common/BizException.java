@@ -4,22 +4,13 @@ public class BizException extends RuntimeException{
 
 	private static final long serialVersionUID = 1L;
 
-	private int status;
-	
 	private int code;
 	
 	public BizException() {
 		super();
 	}
-	public BizException(String message) {
+	public BizException(int code,String message) {
 		super(message);
-	}
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 	public int getCode() {

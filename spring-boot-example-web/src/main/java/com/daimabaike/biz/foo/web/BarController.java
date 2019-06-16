@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.daimabaike.biz.common.interceptor.ResultRewrite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,8 @@ public class BarController extends BaseController {
 	String sss;
 
 	@RequestMapping(value = "query")
-	public String query(@RequestBody BarDTO dto) {
+	@ResultRewrite
+	public String query(BarDTO dto) {
 
 		if (dto.getType() == 2) {
 			throw new RuntimeException();
@@ -59,7 +61,7 @@ public class BarController extends BaseController {
 
 		// service1
 
-		// service2
+		// service2111
 		Result<String> r = new Result<>();
 		try {
 			barService.order();
@@ -104,8 +106,8 @@ public class BarController extends BaseController {
 		
 		Result<DailyData> r=new Result<DailyData>();
 		DailyData d=new DailyData();
-d.setName("zzz");
-d.setAge(112);
+		d.setName("zzz");
+		d.setAge(112);
 		r.setData(d);
 //		result.put("data", new DailyData());
 		

@@ -1,5 +1,7 @@
 package com.daimabaike.biz.sys.model;
 
+import com.daimabaike.biz.common.entity.BaseEntity;
+
 import javax.validation.constraints.NotNull;
 
 //

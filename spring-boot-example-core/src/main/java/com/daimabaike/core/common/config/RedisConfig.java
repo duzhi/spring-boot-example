@@ -1,18 +1,18 @@
 package com.daimabaike.core.common.config;
 
+import java.net.UnknownHostException;
 import java.time.Duration;
 
 import org.springframework.cache.CacheManager;
 //import org.springframework.cache.annotation.EnableCaching;
 //import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializationContext;
-import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.*;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -22,19 +22,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class RedisConfig {
 
-//	@Bean(name = "redisTemplate")
-//	public <T> RedisTemplate<String, T> redisTemplate(RedisConnectionFactory redisConnectionFactory)
-//			throws UnknownHostException {
-//		RedisTemplate<String, T> template = new RedisTemplate<>();
-//		// Json 序列化
-//		template.setDefaultSerializer(new GenericJackson2JsonRedisSerializer());
-//		// key HashKey 都使用String序列化
-//		template.setKeySerializer(template.getStringSerializer());
-//		template.setHashKeySerializer(template.getStringSerializer());
-//
-//		template.setConnectionFactory(redisConnectionFactory);
-//		return template;
-//	}
+	@Bean(name = "redisTemplate")
+	public <T> RedisTemplate<String, T> redisTemplate(RedisConnectionFactory redisConnectionFactory)
+			throws UnknownHostException {
+		RedisTemplate<String, T> template = new RedisTemplate<>();
+		// Json 序列化
+		template.setDefaultSerializer(new GenericJackson2JsonRedisSerializer());
+		// key HashKey 都使用String序列化
+		template.setKeySerializer(template.getStringSerializer());
+		template.setHashKeySerializer(template.getStringSerializer());
+
+		template.setConnectionFactory(redisConnectionFactory);
+		return template;
+	}
 
 //	@Bean
 	@SuppressWarnings({ "unchecked", "rawtypes" })

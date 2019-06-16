@@ -61,7 +61,9 @@ public class FooController extends BaseController {
 	@RequestMapping(value = "/user")
 	@ResponseBody
 	public User ddd() {
-		
+
+
+
 		return FooClient.login();
 	
 	}
@@ -70,7 +72,7 @@ public class FooController extends BaseController {
 	@ResultRewrite
 	public Date sss() {
 		if (new Random().nextInt(10) > 5) {
-			BizException be = new BizException("大于5");
+			BizException be = new BizException(42,"大于5");
 			be.setCode(50001);
 			throw be;
 		}

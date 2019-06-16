@@ -34,18 +34,7 @@ public class AccountController2 extends BaseController{
 		
 		System.out.println("bizex");
 		
-		// get filter 
-		// 
-		
-		
-		
-		
-		if(id == 0) {
-			BizException ex = new BizException("zero error");
-			ex.setStatus(400);
-			ex.setCode(40001);
-			throw ex;
-		}
+		// get filter
 		AccountResponse vo = new AccountResponse();
 		vo.setId("test-" + id);
 		vo.setCreateTime(new Date());

@@ -13,7 +13,7 @@ import com.daimabaike.springboot.mybatis.foo.service.AccountService;
 @RequestMapping(value = "account")
 public class AccountController extends BaseController{
 
-	@Autowired
+//	@Autowired
 	private AccountService accountService;
 	
 	@RequestMapping(value = "/{id}")

@@ -6,8 +6,10 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 
 import com.daimabaike.biz.common.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 // 为了简单处理，DTO、VO 的辅助字段是实体类自己字段相关的辅助信息，如查询请求的日期范围、响应的字典标签：
 // 枚举名称，字典名称、一对一关联实体 ID 名称映射，可以放到 entity，需注明来源（请求还是响应）和用途。
@@ -17,18 +19,21 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class User extends BaseEntity {
 
 	@NotNull(message="名称不能为空")
+	@JsonProperty("name")
+	@JsonAlias("n")
 	private String name;
 	
 	private String deptNo;
 	
-	private String email = "";
+	private String email;
 	
 	private String passWdMd5;
 	
 	private Integer passWdSalt;
 	
 	// 关联的角色列表
-	private List<Role> roles = new ArrayList<>();
+	@JsonInclude(value=Include.NON_EMPTY)
+	private List<Role> roles;
 	
 	public String getName() {
 		return name;

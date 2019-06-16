@@ -2,10 +2,20 @@ package com.daimabaike.console.biz.component;
 
 import java.net.URLEncoder;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.util.AntPathMatcher;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Configuration
 public class DiffSetCLR {
 
+	public DiffSetCLR(){
+		System.out.println("DiffSetCLR()");
+	}
 	public static void main(String... args) throws Exception {
 		
 		String str = "HCbG3xNE3vzhO+u7qCUL1jS5hsu2n5r2cFhnTrtyDAE=";
@@ -65,7 +75,14 @@ public class DiffSetCLR {
 	
 	}
 
-	// 1554087737 1554087737000 1554087600
-	
+	@PostConstruct
+	public void postConstruct() {
+		System.out.println("init");
+	}
+
+	@PreDestroy
+	public void preDestroy() {
+		System.out.println("destroy");
+	}
 	
 }

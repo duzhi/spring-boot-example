@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Primary;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-@Configuration
+//@Configuration
 public class AppConfig {
 
 	@Value("${spring.datasource.url}")
@@ -42,18 +42,18 @@ public class AppConfig {
 		return dataSource;
 	}
 	
-	@Bean
-	@Primary
-	public DynamicDataSource cc() {
-		return new DynamicDataSource(ds1(),secondDataSource());
-	}
+//	@Bean
+//	@Primary
+//	public DynamicDataSource cc() {
+//		return new DynamicDataSource(ds1(),secondDataSource());
+//	}
 	
-	@Bean
-	public SqlSessionFactory sqlSessionFactory(DynamicDataSource ds) throws Exception {
-		SqlSessionFactoryBean fb = new SqlSessionFactoryBean();
-		fb.setDataSource(ds);
-		
-		return fb.getObject();
-	}
+//	@Bean
+//	public SqlSessionFactory sqlSessionFactory(DynamicDataSource ds) throws Exception {
+//		SqlSessionFactoryBean fb = new SqlSessionFactoryBean();
+//		fb.setDataSource(ds);
+//
+//		return fb.getObject();
+//	}
 
 }

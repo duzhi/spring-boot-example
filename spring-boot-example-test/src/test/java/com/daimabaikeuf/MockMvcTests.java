@@ -14,8 +14,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-//@SpringBootTest(properties = "spring.main.web-application-type=reactive")
-//@Import(MyTestsConfiguration.class)
 public class MockMvcTests {
 
 	@Autowired
@@ -24,6 +22,6 @@ public class MockMvcTests {
 	@Test
 	public void exampleTest() throws Exception {
 		this.mvc.perform(MockMvcRequestBuilders.get("/").param("a", "12345")).andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.content().string("Hello World err"));
+				.andExpect(MockMvcResultMatchers.content().string("Hello World :null"));
 	}
 }

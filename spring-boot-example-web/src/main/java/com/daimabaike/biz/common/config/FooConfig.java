@@ -20,7 +20,7 @@ public class FooConfig implements WebMvcConfigurer{
 	public void addInterceptors(InterceptorRegistry registry) {
 		InterceptorRegistration addInterceptor = registry.addInterceptor(resultRewriteInterceptor);
 		// 排除配置
-//		addInterceptor.excludePathPatterns("/error");
+		addInterceptor.excludePathPatterns("/error");
 		// 拦截配置
 		addInterceptor.addPathPatterns("/**");
 	}

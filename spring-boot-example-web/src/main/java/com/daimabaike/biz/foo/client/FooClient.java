@@ -30,7 +30,7 @@ public class FooClient {
 					}).getBody();
 			// 2xx
 			if (ru.getCode() != 0) { // 200 业务异常，注意有的三方 API 用 4xx，5xx 返回业务异常
-				BizException bx = new BizException(ru.getMessage());
+				BizException bx = new BizException(41,ru.getMessage());
 				bx.setCode(ru.getCode()); // 枚举或数据库字典映射。不匹配的则返回未知code，打印异常信息
 				throw bx;
 			}
@@ -39,7 +39,7 @@ public class FooClient {
 
 			logger.error("ResponseBody={}", e.getResponseBodyAsString());
 			// 需要区分是正常异常（有的api 4xx 5xx返回业务异常），解析下；还是服务不正常异常（网关异常等）
-			BizException bx = new BizException(e.getRawStatusCode() + ",body=" + e.getResponseBodyAsString());
+			BizException bx = new BizException(42,e.getRawStatusCode() + ",body=" + e.getResponseBodyAsString());
 			bx.setCode(400023);
 
 			throw bx;
@@ -62,7 +62,7 @@ public class FooClient {
 			// @formatter:on
 
 			logger.error("login RestClientException:", e1);
-			BizException bx = new BizException(e1.getMessage());
+			BizException bx = new BizException(51,e1.getMessage());
 			bx.setCode(400021);
 			throw bx;
 		}

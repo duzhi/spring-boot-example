@@ -1,12 +1,15 @@
 package com.daimabaike.biz.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 public class BaseEntity {
 
 	protected Long id;
 
-	private String ip;
+	@JsonIgnore
+	private String _ip;
 
 	private Date createTime;
 
@@ -20,12 +23,12 @@ public class BaseEntity {
 		this.id = id;
 	}
 
-	public String getIp() {
-		return ip;
+	public String get_ip() {
+		return _ip;
 	}
 
-	public void setIp(String ip) {
-		this.ip = ip;
+	public void set_ip(String _ip) {
+		this._ip = _ip;
 	}
 
 	public Date getCreateTime() {

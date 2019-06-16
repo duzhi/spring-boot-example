@@ -71,8 +71,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>com.aliyun.phoenix</groupId>
+			<artifactId>ali-phoenix-queryserver-client</artifactId>
+			<version>5.1.0-HBase-2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alipay.sdk</groupId>
+			<artifactId>alipay-sdk-java</artifactId>
+			<version>3.7.89.ALL</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -81,7 +88,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
 		</plugins>
 	</build>
 </project>

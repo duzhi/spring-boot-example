@@ -1,5 +1,6 @@
 package com.daimabaike.biz.common.web;
 
+import com.daimabaike.biz.common.ResultCodeEnum;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
@@ -12,7 +13,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.daimabaike.biz.common.BizException;
 import com.daimabaike.biz.common.Result;
-import com.daimabaike.biz.common.constant.ResultCodeEnum;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 @RestControllerAdvice
@@ -40,10 +40,10 @@ public class CommonController extends BaseController {
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public Result<Void> httpMessageNotReadableException(HttpMessageNotReadableException t) {
 
-		log.info("getLocalizedMessage-=" + t.getLocalizedMessage());
+		logger.info("getLocalizedMessage-=" + t.getLocalizedMessage());
 		InvalidFormatException ie = (InvalidFormatException) t.getCause();
 
-		log.info(ie.getMessage());
+		logger.info(ie.getMessage());
 
 		ie.getPath().get(0).getFieldName();
 		return Result.fail(ResultCodeEnum.SYS11);
@@ -52,7 +52,7 @@ public class CommonController extends BaseController {
 
 	@ExceptionHandler(HttpServerErrorException.class)
 	public Result<Void> ex22(HttpServerErrorException t) {
-		log.error("sys.error", t);
+		logger.error("sys.error", t);
 
 		// r.setCode(50000);
 		return JSONObject.parseObject(t.getResponseBodyAsString(), new TypeReference<Result<Void>>() {
@@ -67,7 +67,7 @@ public class CommonController extends BaseController {
 
 	@ExceptionHandler(Throwable.class)
 	public Result<Void> ex(Throwable t) {
-		log.error("sys.error", t);
+		logger.error("sys.error", t);
 		return Result.fail(ResultCodeEnum.SYS11);
 	}
 

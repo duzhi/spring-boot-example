@@ -1,36 +1,42 @@
 package com.daimabaike.biz.sys.web;
 
+import com.alibaba.fastjson.JSONObject;
+import com.daimabaike.biz.common.interceptor.ResultRewrite;
+import com.daimabaike.biz.sys.entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.daimabaike.biz.common.BizException;
-import com.daimabaike.biz.common.Result;
 import com.daimabaike.biz.common.web.BaseController;
 import com.daimabaike.biz.sys.model.AccountResponse;
 import com.daimabaike.biz.sys.model.UserRequest;
 import com.daimabaike.biz.sys.service.AccountService;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-@Controller
-@RequestMapping("admin")
-public class AccountController extends BaseController{
-	
+import java.util.Set;
+
+@RestController
+@RequestMapping({"admin","a"})
+public class AccountController extends BaseController<User>{
+
+	Logger logger = LoggerFactory.getLogger(AccountController.class);
+
 	private AccountService accountService;
 	
 	@Autowired
 	public AccountController(AccountService accountService) {
-		this.accountService = accountService;
+		this.accountService =    accountService;
 	}
 	
-//	consumes： 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;
-//	produces:    指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回；
+//	consumes: 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;
+//	produces: 指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回；
 
 	@RequestMapping(value="login")
 	public String login() {
-		
+		HandlerInterceptorAdapter a;
 		return "login";
 //				ResultUtils.ok(String.format(" login at %s.", new Date()));
 	}
@@ -45,27 +51,48 @@ public class AccountController extends BaseController{
 //    }
 
 	@RequestMapping("aaa")
-	public Result<UserRequest> aaa(UserRequest userDTO) {
+//	@ResultRewrite
+	public String aaa(@RequestBody String body) {
 //		userDTO.setSex(SexEnum.correct(userDTO.getSex()));
 		
-		Result<UserRequest> r = new Result<>();
-		r.setData(userDTO);
+		//Result<UserRequest> r = new Result<>();
+		//r.setData(userDTO);
 		
 //		System.out.println(userDTO.getSex().name());
 //		System.out.println(userDTO.getSex().toString());
 //		System.out.println(userDTO.getSex().getValue());
-		
-		return r;
+	//	userDTO.setName("name is "+userDTO.getName());
+
+
+
+
+		return "str==="+body ;
 	}
 	
 	@RequestMapping("bb")
-	public UserRequest b(UserRequest userDTO) {
-		if(11==userDTO.getId()) {
-			throw new BizException();
-		}
+	public UserRequest b(@RequestBody String body) {
+
+		UserRequest userDTO = checkSign(body);
+
+		userDTO.setName("name xxxx="+userDTO.getName());
 		return userDTO;
 	}
-	
+
+	private UserRequest checkSign(String body) {
+		JSONObject json = JSONObject.parseObject(body);
+		Set<String> set = json.keySet();
+		for(String ss:set){
+			System.out.println(ss);
+		}
+		if(!"9527".equalsIgnoreCase(json.getString("sign"))){
+			throw new BizException(400112,"dadadada");
+		}
+
+		return
+				JSONObject.parseObject(body,UserRequest.class);
+	}
+
+
 	@RequestMapping(value="bb2",produces=MediaType.TEXT_PLAIN_VALUE)//consumes=MediaType.TEXT_PLAIN_VALUE, ,
 	public String b2(UserRequest userDTO) {
 		
@@ -110,5 +137,17 @@ public class AccountController extends BaseController{
 	public AccountResponse xxxx(@ModelAttribute UserRequest userDTO) {
 		return null;
 	}
-	
+
+	@RequestMapping({"user","u"})
+	@ResultRewrite
+	public User user(User user) {
+		logger.info("user.ip={}" , user.get_ip());
+		logger.info("user.name={}" , user.getName());
+
+		user.setName("name: "+user.getName());
+		user.setDeptNo("deptNo: "+user.getDeptNo());
+
+		return user;
+	}
+
 }
