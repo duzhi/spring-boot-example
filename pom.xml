@@ -15,7 +15,7 @@
 
 	<properties>
 		<mybatis.spring.version>1.3.2</mybatis.spring.version>
-		<fastjson.version>1.2.53</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 		<jetcache.version>2.5.12</jetcache.version>
 		<aliyun.oss.version>3.4.2</aliyun.oss.version>
 	</properties>
